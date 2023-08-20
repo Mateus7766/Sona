@@ -1,0 +1,1 @@
+# Bot de Discord para uma comunidade, depois eu ajeito esse arquivo aqui bruh
