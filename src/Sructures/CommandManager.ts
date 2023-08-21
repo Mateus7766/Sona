@@ -31,7 +31,7 @@ class CommandManager {
                 }
             }
         } catch (error) {
-            if (error instanceof Error) debug.Error(`Ocorreu um erro ao carregar os comandos em barra. Erro: ${error.message}`)
+            if (error instanceof Error) debug.Error(`Ocorreu um erro ao carregar os comandos em barra. Erro: ${error.stack}`)
         }
     }
 

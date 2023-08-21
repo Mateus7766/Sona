@@ -1,4 +1,8 @@
 import * as dotenv from 'dotenv'
-dotenv.config()
-import "./Database/Mongoose"
-import "./Sructures/Client"
+dotenv.config();
+
+(async () => {
+    await import("./validade")
+    await import("./Database/Mongoose")
+    await import("./Sructures/Client")
+})()
