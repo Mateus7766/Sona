@@ -13,7 +13,7 @@ class EventsManager {
     }
     async loadEvents() {
         try {
-            debug.Alert("Começando a carregar os comandos em barra.")
+            debug.Alert("Começando a carregar os eventos.")
             const eventsName = readdirSync(join(__dirname, '..', this.eventsFolder))
             eventsName.forEach(async (event) => {
                 const { default: EventClass } = await import(join(__dirname, '..', this.eventsFolder, event))

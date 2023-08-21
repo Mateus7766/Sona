@@ -6,7 +6,7 @@ class PingCommand extends Command {
     .setName('ping')
     .setDescription('Mostra o ping')
     async execute(interaction: ChatInputCommandInteraction) {
-        interaction.reply("Pong! 💀💀☠️😭")
+        interaction.reply(`🏓 Pong!\n\n🚀 Ping do websocket: \`\`${this.client.ws.ping}ms\`\`\n⌚ Seu comando levou cerca de \`\`${Math.abs((new Date()).getMilliseconds() - interaction.createdAt.getMilliseconds())}ms\`\` para ser respondido`)
     }
 }
 
