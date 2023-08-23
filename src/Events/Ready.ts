@@ -13,7 +13,8 @@ class ReadyEvent extends Event {
         this.client.guilds.cache.forEach(async (guild) => {
             const guildDocument = await Guild.get(guild.id)
             if(!guildDocument) await Guild.create({
-                guildId: guild.id
+                guildId: guild.id,
+                drawingRecord: 0
             })
         })
 
@@ -21,7 +22,7 @@ class ReadyEvent extends Event {
             console.log(chalk.green(data))
         })
         this.debug.Emphasis(`Logado no Bot: ${this.client.user?.tag}`)
-        const listOfStatus = ["Não, não sou a Sona do LoL!", "Sona", "Envie seus desenhos, por favor!"]
+        const listOfStatus = ["Não. Eu não sou a Sona do LoL.", "Sona", "Envie seus desenhos, por favor!"]
         const statusChanger = () => {
             const status = listOfStatus[Math.floor(Math.random() * listOfStatus.length)]
             this.client.user?.setActivity({

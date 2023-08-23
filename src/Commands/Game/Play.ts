@@ -55,7 +55,12 @@ class PlayCommand extends Command {
         async function startGame(){
             const image = await Image.randomImage("General", usedImages)
             if(!image) {
-                interaction.channel?.send("Eita! Parece que os desenhos acabaram 😢.\n> Você sabe desenhar e quer que as outras pessoas tentem adivinhar oque você fez? otimo! você pode contribuir para o banco de dados de desenhos, contate <@792527247566307348> no privado.")
+                const embed = new EmbedBuilder()
+                .setColor("Red")
+                .setDescription("Eita! Parece que os desenhos acabaram 😢.\n\n> Você sabe desenhar e quer que as outras pessoas tentem adivinhar oque você fez? otimo! você pode contribuir para o banco de dados de desenhos, contate <@792527247566307348> no privado.")
+                interaction.channel?.send({
+                    embeds: [embed]
+                })
                 endGame()
                 return
             }
@@ -114,7 +119,7 @@ class PlayCommand extends Command {
             const ordened = new Map([...leaders.entries()].sort())
             const acertos = Array.from(leaders.values()).reduce((soma, atual) => soma + atual, 0)
 
-            if(guildDocument.drawingRecord || 0 < acertos) {
+            if(acertos > guildDocument.drawingRecord) {
                 guildDocument.drawingRecord = acertos
                 await guildDocument.save()
                 interaction.channel?.send("O recorde foi batido! 🏆")
