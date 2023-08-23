@@ -3,7 +3,7 @@ import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { Image } from "../../Database/Models/Image";
-import fetch from "node-fetch"
+import fetch from "node-fetch";
 
 class AddDrawingCommand extends Command {
     data = new SlashCommandBuilder()

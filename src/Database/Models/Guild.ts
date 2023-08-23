@@ -40,6 +40,20 @@ class GuildModel {
         })
         return guild
     }
+
+    async topGuilds(){
+        const guilds = await this.model.find({}).sort({
+            drawingRecord: -1
+        })
+        .limit(10)
+        return guilds
+    }
+
+    async getAll(){
+        const guilds = await this.model.find({})
+        return guilds
+    }
+
 }
 
 export const Guild = new GuildModel()
