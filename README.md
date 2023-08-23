@@ -16,6 +16,14 @@
   <a href="#licensa">Licensa</a>
 </p>
 
+ ```
+ $ node dist/index
+   ____
+ / ___|  ___  _ __   __ _
+ \___ \ / _ \| '_ \ / _` |
+  ___) | (_) | | | | (_| |
+ |____/ \___/|_| |_|\__,_|
+ ```
 ## Introdução
 
 A ideia de criar a Sona surgiu do nada, o objetivo principal era de criar um bot para um servidor de programação, mas acabou que nem eu sei oque que eu fiz. 
