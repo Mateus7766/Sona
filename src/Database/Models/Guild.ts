@@ -11,6 +11,10 @@ class GuildModel {
                 required: true,
                 unique: true
             },
+            drawingRecord: {
+                type: Schema.Types.Number,
+                default: 0
+            }
         })
         this.model = model<IGuild>("Guild", this.schema)
     }

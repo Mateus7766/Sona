@@ -6,6 +6,7 @@ enum Language {
 }
 interface IGuild {
     guildId: string,
+    drawingRecord?: number
 }
 
 export {

@@ -20,7 +20,7 @@ class CustomClient extends Client {
     }
 }
 
-const client = new CustomClient({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages] });
+const client = new CustomClient({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
 client.init(process.env["TOKEN"])
 
 
