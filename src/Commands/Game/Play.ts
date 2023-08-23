@@ -5,7 +5,6 @@ import { English } from "../../Languages/en-US";
 import { Image } from "../../Database/Models/Image";
 import { distance } from "fastest-levenshtein";
 import { Guild } from "../../Database/Models/Guild";
-import { string } from "yup";
 
 const GuildsCache = new Map<string, boolean>()
 
@@ -90,10 +89,10 @@ class PlayCommand extends Command {
                     if(leaders.has(message.author)) leaders.set(message.author, leaders.get(message.author) as number + 1)
                     else leaders.set(message.author, 1)
                     message.reply({
-                        content: "⭐ Acertou!\n\n> **❗ Preparem-se para o proximo desenho em 5 segundos!**"
+                        content: "⭐ Acertou!\n\n> **❗ Preparem-se para o proximo desenho em 10 segundos!**"
                     })
                     collector?.stop("1")
-                } else if(distance(message.content.toLocaleLowerCase(), image.name.toLocaleLowerCase()) < 2) {
+                } else if(distance(message.content.toLocaleLowerCase(), image.name.toLocaleLowerCase()) < 3) {
                     message.reply({
                         content: "🐼 Chegou perto!",
                     })
@@ -102,7 +101,7 @@ class PlayCommand extends Command {
             .on("end", async (collected, reason) => {
                 if(reason == "1"){
                     RODADA++
-                    setTimeout(startGame, 5000) // acertou e começa de novo
+                    setTimeout(startGame, 10000) // acertou e começa de novo
                 } else {
                     await endGame() // ngm acertou e acabou o tempo
                 }

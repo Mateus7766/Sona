@@ -29,6 +29,14 @@ export const Portuguese = {
         play: {
             name: "iniciar",
             description: "👑 Jogo ≫ Iniciar uma partida de acerto do desenho."
+        },
+        rank: {
+            name: "placar",
+            description: "🏆 Jogo ≫ Mostra os servidores com mais acertos",
+            responses: {
+                embedTitle: "🏆 SERVIDORES COM MAIS ACERTOS",
+                embedDescription: "{{}} - **{{}}** Acertos"
+            }
         }
     }
 }

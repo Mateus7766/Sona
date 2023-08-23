@@ -29,6 +29,14 @@ export const English = {
         play: {
             name: "play",
             description: "🎲 Game ≫ Guess the drawing game begins."
-        }
+        },
+        rank: {
+            name: "scoreboard",
+            description: "🏆 Game ≫ Shows the servers with the correct answers",
+            responses: {
+                embedTitle: "🏆 SERVER WITH THE MOST CORRECT ANSWERS",
+                embedDescription: "{{}} - **{{}}** correct answers"
+            }
+          }
     }
 }
