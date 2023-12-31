@@ -11,7 +11,7 @@ abstract class Command {
         this.client = client
     }
     abstract readonly data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
-    abstract execute(interaction: ChatInputCommandInteraction): void
+    abstract execute(interaction: ChatInputCommandInteraction): Promise<any>
 
     set setLanguage(language: any) {
 

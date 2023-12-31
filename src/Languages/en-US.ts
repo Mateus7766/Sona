@@ -1,5 +1,23 @@
 export const English = {
     commands: {
+        info: {
+            name: 'info',
+            description: '💻 Normal ≫ Displays information about the Bot.',
+            responses: {
+                embedDescription: 'Nice to meet you {{}}. My name is **{{}}**, and I was developed using TypeScript with lots of love :heart:! All of this is possible thanks to my creator: <@792527247566307348>',
+                embedTitle: "Information about me",
+                fields: {
+                    os: 'Operating System',
+                    core: 'Processor',
+                    versionts: 'TypeScript Version',
+                    versionnode: 'Node.js Version',
+                    versionds: 'discord.js Version',
+                    cmdstotal: 'Total Commands',
+                    versionapi: 'API Version',
+                    src: 'Source Code'
+                }
+            }
+        },        
         ping: {
             name: "ping",
             description: "💻 Normal ≫ Show my ping.",

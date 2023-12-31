@@ -14,6 +14,7 @@ class PingCommand extends Command {
         "pt-BR": Portuguese.commands.ping.description,
     })
     async execute(interaction: ChatInputCommandInteraction) {
+        await interaction.deferReply()
         const now = new Date()
         const embed = new EmbedBuilder()
         .setTitle(this.language.ping.responses.embedTitle)
@@ -25,7 +26,7 @@ class PingCommand extends Command {
             text: this.client.user?.tag as string,
             iconURL: this.client.user?.displayAvatarURL()
         })
-        interaction.reply({ embeds: [embed] })
+        await interaction.editReply({ embeds: [embed] })
     }
 }
 

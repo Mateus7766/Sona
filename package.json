@@ -7,10 +7,12 @@
     "figlet": "^1.6.0",
     "mongoose": "^7.4.3",
     "node-fetch": "^2.6.7",
+    "ts-node": "^10.9.2",
     "yup": "^1.2.0"
   },
   "devDependencies": {
     "@types/figlet": "^1.5.6",
-    "@types/node-fetch": "^2.6.4"
+    "@types/node-fetch": "^2.6.4",
+    "typescript": "^5.3.3"
   }
 }

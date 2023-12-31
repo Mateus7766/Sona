@@ -1,5 +1,23 @@
 export const Portuguese = {
     commands: {
+        info: {
+            name: 'info',
+            description: '💻 Normal ≫ Mostra informações sobre o Bot.',
+            responses: {
+                embedDescription: 'Prazer {{}}. Eu me chamo **{{}}**, fui desenvolvida usando TypeScript com muito amor :heart:! Tudo isso é possivel graças ao meu criador: <@792527247566307348>',
+                embedTitle: "Informaçẽos sobre mim",
+                fields: {
+                    os: 'Sistema operacional',
+                    core: 'Processador',
+                    versionts: 'Versão do TypeScript',
+                    versionnode: 'Versão do NodeJS',
+                    versionds: 'Versão do discord.js',
+                    cmdstotal: 'Total de comandos',
+                    versionapi: 'Versão da API',
+                    src: 'Código fonte'
+                }
+            }
+        },
         ping: {
             name: "ping",
             description: "💻 Normal ≫ Mostra o meu ping.",

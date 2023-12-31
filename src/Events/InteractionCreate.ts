@@ -7,13 +7,17 @@ const debug = new Debug()
 class InteractionCreateEvent extends Event {
     name = Events.InteractionCreate
     async execute(interaction: BaseInteraction) {
-        if(interaction instanceof ChatInputCommandInteraction){
-            const command = this.client.commandsManager.commands.get(interaction.commandName)
-            if(!command) return interaction.reply("desculpa, mas eu não sei oque aconteceu.")
-            // if(interaction.user.id != "792527247566307348") return interaction.reply("é o minino de papai é")
-            debug.Log(`O comando "${interaction.commandName}" foi usado por ${interaction.user.tag}.`)
-            command.setLanguage = interaction.locale
-            command.execute(interaction)
+        if (interaction instanceof ChatInputCommandInteraction) {
+            try {
+                const command = this.client.commandsManager.commands.get(interaction.commandName)
+                if (!command) return interaction.reply("Desculpa, mas eu não sei oque aconteceu.")
+                // if(interaction.user.id != "792527247566307348") return interaction.reply("é o minino de papai é")
+                debug.Log(`O comando "${interaction.commandName}" foi usado por ${interaction.user.tag}.`)
+                command.setLanguage = interaction.locale
+                await command.execute(interaction)
+            } catch (e) {
+                await interaction.channel?.send(`Um erro aconteceu:\n\`\`\`bash\n${e}\`\`\`\n\nA ${this.client.user?.username} está reportando o problema...`)
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-import { Client, ClientOptions, GatewayIntentBits } from "discord.js"
+import { Client, ClientOptions, ClientUser, GatewayIntentBits } from "discord.js"
 import { CommandManager } from "./CommandManager"
 import { EventsManager } from "./EventsManager"
 
