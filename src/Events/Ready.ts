@@ -38,7 +38,7 @@ class ReadyEvent extends Event {
             console.log(chalk.green(data))
         })
         this.debug.Emphasis(`Logado no Bot: ${this.client.user?.tag}`)
-        const listOfStatus = ["Não. Eu não sou a Sona do LoL.", "Sona", "Envie seus desenhos, por favor!"]
+        const listOfStatus = ["Sona", "Envie seus desenhos, por favor!"]
         const statusChanger = () => {
             const status = listOfStatus[Math.floor(Math.random() * listOfStatus.length)]
             this.client.user?.setActivity({

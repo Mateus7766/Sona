@@ -1,5 +1,13 @@
 export const English = {
     commands: {
+        cat: {
+            name: 'cat',
+            description: '🎈 Fun ≫ Shows a random cat.'
+        },        
+        dog: {
+            name: 'dog',
+            description: '🎈 Fun ≫ Shows a random dog.'
+        },        
         info: {
             name: 'info',
             description: '💻 Normal ≫ Displays information about the Bot.',

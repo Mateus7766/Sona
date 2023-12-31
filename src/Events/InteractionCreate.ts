@@ -16,7 +16,7 @@ class InteractionCreateEvent extends Event {
                 command.setLanguage = interaction.locale
                 await command.execute(interaction)
             } catch (e) {
-                await interaction.channel?.send(`Um erro aconteceu:\n\`\`\`bash\n${e}\`\`\`\n\nA ${this.client.user?.username} está reportando o problema...`)
+                await interaction.channel?.send(`Um erro aconteceu:\n\`\`\`bash\n${e}\`\`\`\nA ${this.client.user?.username} está reportando o problema...`)
             }
         }
     }
