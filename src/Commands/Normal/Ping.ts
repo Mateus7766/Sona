@@ -14,8 +14,6 @@ class PingCommand extends Command {
         "pt-BR": Portuguese.commands.ping.description,
     })
     async execute(interaction: ChatInputCommandInteraction) {
-        await interaction.deferReply()
-        const now = new Date()
         const embed = new EmbedBuilder()
         .setTitle(this.language.ping.responses.embedTitle)
         .setThumbnail('https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F933761289824657439.png%3Fv%3D1&w=64&q=75')

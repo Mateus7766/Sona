@@ -14,7 +14,6 @@ class CatCommand extends Command {
         "pt-BR": Portuguese.commands.cat.description,
     })
     async execute(interaction: ChatInputCommandInteraction) {
-        await interaction.deferReply()
         let res = await (await fetch('https://api.thecatapi.com/v1/images/search')).json();
         const embed = new EmbedBuilder()
         .setTitle('🐱')

@@ -16,7 +16,6 @@ class InfoCommand extends Command {
         "pt-BR": Portuguese.commands.info.description,
     })
     async execute(interaction: ChatInputCommandInteraction) {
-        await interaction.deferReply()
         const embed = new EmbedBuilder()
         .setTitle(this.language.info.responses.embedTitle)
         .setThumbnail(this.client.user?.displayAvatarURL() as string)

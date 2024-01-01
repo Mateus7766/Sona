@@ -7,6 +7,7 @@ import { English } from "../Languages/en-US"
 abstract class Command {
     client: CustomClient
     language = Portuguese.commands || English.commands
+    languagePrefix: 'en-US' | 'pt-BR' = "en-US"
     constructor(client: CustomClient) {
         this.client = client
     }
@@ -14,7 +15,6 @@ abstract class Command {
     abstract execute(interaction: ChatInputCommandInteraction): Promise<any>
 
     set setLanguage(language: any) {
-
         const langObj = {
             "pt-BR": Portuguese,
             "en-US": English
@@ -22,6 +22,7 @@ abstract class Command {
 
         if (Object.keys(langObj).includes(language)) {
             this.language = langObj[language as Language].commands
+            this.languagePrefix = language
         } else this.language = langObj["en-US"].commands
     }
 

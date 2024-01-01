@@ -1,5 +1,9 @@
 export const English = {
     commands: {
+        forca: {
+            name: 'forca',
+            description: 'Jogo da forca'
+        },
         cat: {
             name: 'cat',
             description: '🎈 Fun ≫ Shows a random cat.'

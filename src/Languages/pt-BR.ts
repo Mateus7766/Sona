@@ -1,5 +1,9 @@
 export const Portuguese = {
     commands: {
+        forca: {
+            name: 'forca',
+            description: 'Jogo da forca'
+        },
         cat: {
             name: 'cat',
             description: '🎈 Diversão ≫ Mostra um gato aleatório.'

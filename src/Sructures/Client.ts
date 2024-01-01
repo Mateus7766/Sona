@@ -1,10 +1,12 @@
-import { Client, ClientOptions, ClientUser, GatewayIntentBits } from "discord.js"
+import { Client, ClientOptions, GatewayIntentBits } from "discord.js"
 import { CommandManager } from "./CommandManager"
+import { Utils } from "./Utils"
 import { EventsManager } from "./EventsManager"
 
 class CustomClient extends Client {
     commandsManager: CommandManager
     eventsManager: EventsManager
+    utils = new Utils()
     constructor(
         options: ClientOptions
     ){

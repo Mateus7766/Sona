@@ -14,7 +14,6 @@ class DogCommand extends Command {
         "pt-BR": Portuguese.commands.dog.description,
     })
     async execute(interaction: ChatInputCommandInteraction) {
-        await interaction.deferReply()
         let res = await (await fetch('https://api.thedogapi.com/v1/images/search')).json();
         const embed = new EmbedBuilder()
         .setTitle('🐶')
