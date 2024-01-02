@@ -2,7 +2,19 @@ export const Portuguese = {
     commands: {
         forca: {
             name: 'forca',
-            description: 'Jogo da forca'
+            description: '🎈 Diversão ≫ Jogo da forca.',
+            responses: {
+                   error: 'Algo deu errado, desculpa...',
+                   hint: 'Sem dica.',
+                   lostMessage: '😭 Que pena! O tempo esgotou ou você só não acertou mesmo. (`{{}}`)',
+                   winMessage: '🥳 Parabeńs! Você acertou a palavra. (`{{}}`)',
+                   embedTitle: 'Jogo da forca',
+                   embedLetter: 'Letras',
+                   embedHint: 'Dica',
+                   embedTryss: 'Tentativas',
+                   embedNone: 'Nenhuma',
+                   embedForca: 'Forca'
+            }
         },
         cat: {
             name: 'cat',

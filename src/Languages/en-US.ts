@@ -1,9 +1,21 @@
 export const English = {
     commands: {
         forca: {
-            name: 'forca',
-            description: 'Jogo da forca'
-        },
+            name: 'hangman',
+            description: '🎈 Fun ≫ Hangman game.',
+            responses: {
+                error: 'Something went wrong, sorry...',
+                hint: 'No hint.',
+                lostMessage: '😭 Too bad! Time ran out or you just didn\'t guess it. (`{{}}`)',
+                winMessage: '🥳 Congratulations! You guessed the word. (`{{}}`)',
+                embedTitle: 'Hangman Game',
+                embedLetter: 'Letters',
+                embedHint: 'Hint',
+                embedTryss: 'Attempts',
+                embedNone: 'None',
+                embedForca: 'Hangman'
+            }
+        },        
         cat: {
             name: 'cat',
             description: '🎈 Fun ≫ Shows a random cat.'
