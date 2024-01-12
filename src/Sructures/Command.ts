@@ -1,4 +1,4 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder, Locale } from "discord.js"
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
 import { CustomClient } from "./Client"
 import { Language } from "../Database/Interfaces/Guild"
 import { Portuguese } from "../Languages/pt-BR"
@@ -7,10 +7,16 @@ import { English } from "../Languages/en-US"
 abstract class Command {
     client: CustomClient
     language = Portuguese.commands || English.commands
-    languagePrefix: 'en-US' | 'pt-BR' = "en-US"
     constructor(client: CustomClient) {
         this.client = client
     }
+
+    abstract options: {
+        inVoiceChannel: boolean,
+        isPlaying: boolean,
+        sameVoiceChannel: boolean,
+    } | undefined
+
     abstract readonly data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
     abstract execute(interaction: ChatInputCommandInteraction): Promise<any>
 
@@ -22,9 +28,9 @@ abstract class Command {
 
         if (Object.keys(langObj).includes(language)) {
             this.language = langObj[language as Language].commands
-            this.languagePrefix = language
         } else this.language = langObj["en-US"].commands
     }
+
 
     t(message: string, ...args: any[]) {
         for (let text of args) {

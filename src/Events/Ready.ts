@@ -10,8 +10,9 @@ const debug = new Debug()
 class ReadyEvent extends Event {
     name = Events.ClientReady
     async execute() {
+        this.client.player.start(this.client.user?.id as string);
         this.client.user?.setActivity({
-            name: "Inciando serviços..."
+            name: "Starting..."
         })
         this.client.guilds.cache.forEach(async (guild) => {
             const guildDocument = await Guild.get(guild.id)
@@ -27,7 +28,7 @@ class ReadyEvent extends Event {
         const guilds = await Guild.getAll()
 
         guilds.forEach(async (guild) => {
-            const guildData = await this.client.guilds.cache.get(guild.guildId)
+            const guildData = this.client.guilds.cache.get(guild.guildId)
             if (!guildData) {
                 await Guild.delete(guild.guildId)
                 debug.Log(`O servidor foi removido do banco de dados: ${guild.guildId} [ Ready.ts ]`)
@@ -38,7 +39,7 @@ class ReadyEvent extends Event {
             console.log(chalk.green(data))
         })
         this.debug.Emphasis(`Logado no Bot: ${this.client.user?.tag}`)
-        const listOfStatus = ["Sona", "Envie seus desenhos, por favor!"]
+        const listOfStatus = [`${this.client.guilds.cache.size} servers`]
         const statusChanger = () => {
             const status = listOfStatus[Math.floor(Math.random() * listOfStatus.length)]
             this.client.user?.setActivity({

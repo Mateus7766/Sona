@@ -5,25 +5,26 @@ import { English } from "../../Languages/en-US";
 
 class PingCommand extends Command {
     data = new SlashCommandBuilder()
-    .setName(English.commands.ping.name)
-    .setNameLocalizations({
-        "pt-BR": Portuguese.commands.ping.name,
-    })
-    .setDescription(English.commands.ping.description)
-    .setDescriptionLocalizations({
-        "pt-BR": Portuguese.commands.ping.description,
-    })
+        .setName(English.commands.ping.name)
+        .setNameLocalizations({
+            "pt-BR": Portuguese.commands.ping.name,
+        })
+        .setDescription(English.commands.ping.description)
+        .setDescriptionLocalizations({
+            "pt-BR": Portuguese.commands.ping.description,
+        })
+    options: undefined
     async execute(interaction: ChatInputCommandInteraction) {
         const embed = new EmbedBuilder()
-        .setTitle(this.language.ping.responses.embedTitle)
-        .setThumbnail('https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F933761289824657439.png%3Fv%3D1&w=64&q=75')
-        .setColor("Blue")
-        .setDescription(this.t(this.language.ping.responses.pingMessage, Math.abs((new Date()).getMilliseconds() - interaction.createdAt.getMilliseconds()), Math.abs(this.client.ws.ping)))
-        .setTimestamp()
-        .setFooter({
-            text: this.client.user?.tag as string,
-            iconURL: this.client.user?.displayAvatarURL()
-        })
+            .setTitle(this.language.ping.responses.embedTitle)
+            .setThumbnail('https://discords.com/_next/image?url=https%3A%2F%2Fcdn.discordapp.com%2Femojis%2F933761289824657439.png%3Fv%3D1&w=64&q=75')
+            .setColor("Blue")
+            .setDescription(this.t(this.language.ping.responses.pingMessage, Math.abs((new Date()).getMilliseconds() - interaction.createdAt.getMilliseconds()), Math.abs(this.client.ws.ping)))
+            .setTimestamp()
+            .setFooter({
+                text: this.client.user?.tag as string,
+                iconURL: this.client.user?.displayAvatarURL()
+            })
         await interaction.editReply({ embeds: [embed] })
     }
 }

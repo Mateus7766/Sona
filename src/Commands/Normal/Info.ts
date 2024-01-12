@@ -15,6 +15,7 @@ class InfoCommand extends Command {
     .setDescriptionLocalizations({
         "pt-BR": Portuguese.commands.info.description,
     })
+    options: undefined
     async execute(interaction: ChatInputCommandInteraction) {
         const embed = new EmbedBuilder()
         .setTitle(this.language.info.responses.embedTitle)

@@ -2,10 +2,12 @@ import { Client, ClientOptions, GatewayIntentBits } from "discord.js"
 import { CommandManager } from "./CommandManager"
 import { Utils } from "./Utils"
 import { EventsManager } from "./EventsManager"
+import { Player } from "./Lavalink"
 
 class CustomClient extends Client {
     commandsManager: CommandManager
     eventsManager: EventsManager
+    player = new Player(this)
     utils = new Utils()
     constructor(
         options: ClientOptions
@@ -17,15 +19,16 @@ class CustomClient extends Client {
     async init(token?: string) {
         await this.commandsManager.loadCommand()
         await this.commandsManager.registryCommands()
-        await this.eventsManager.loadEvents()
+        await this.eventsManager.loadClientEvents()
         super.login(token)
     }
 }
 
-const client = new CustomClient({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+const client = new CustomClient({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.GuildVoiceStates] });
 client.init(process.env["TOKEN"])
 
 
 export {
-    CustomClient
+    CustomClient,
+    client
 }

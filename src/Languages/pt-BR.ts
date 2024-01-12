@@ -1,28 +1,86 @@
 export const Portuguese = {
     commands: {
-        forca: {
-            name: 'forca',
-            description: '🎈 Diversão ≫ Jogo da forca.',
+        default: {
+            inVoiceChannel: 'Você precisa estar conectado em um canal de voz.',
+            isPlaying: 'Não tem nenhuma música tocando.',
+            sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
+            defaultEmbedTitle: '{{}} | Sistema de música'
+        },
+        nowplaying: {
+            name: 'tocandoagora',
+            description: '🎶 Música ≫ Mostra a música atual.'
+        },
+        pause: {
+            name: 'pausar',
+            description: '🎶 Música ≫ Pausa a música atual.',
             responses: {
-                   error: 'Algo deu errado, desculpa...',
-                   hint: 'Sem dica.',
-                   lostMessage: '😭 Que pena! O tempo esgotou ou você só não acertou mesmo. (`{{}}`)',
-                   winMessage: '🥳 Parabeńs! Você acertou a palavra. (`{{}}`)',
-                   embedTitle: 'Jogo da forca',
-                   embedLetter: 'Letras',
-                   embedHint: 'Dica',
-                   embedTryss: 'Tentativas',
-                   embedNone: 'Nenhuma',
-                   embedForca: 'Forca'
+                errEmbed: 'A música já está parada.',
+                successEmbed: '⏸ Musica pausada.'
             }
         },
-        cat: {
-            name: 'cat',
-            description: '🎈 Diversão ≫ Mostra um gato aleatório.'
+        resume: {
+            name: 'retomar',
+            description: '🎶 Música ≫ Retoma a tocar a música atual.',
+            responses: {
+                errEmbed: 'A música já está tocando.',
+                successEmbed: '▶ Voltando a tocar'
+            }
         },
-        dog: {
-            name: 'dog',
-            description: '🎈 Diversão ≫ Mostra um cachorro aleatório.'
+        shuffle: {
+            name: 'embaralhar',
+            description: '🎶 Música ≫ Embaralha a ordem das músicas',
+            responses: {
+                errEmbed: 'Eita, não tem nenhuma música na fila, só essa que você ta ouvindo agora...',
+                successEmbed: 'A fila foi embaralhada.'
+            }
+        },
+        queue: {
+            name: 'queue',
+            description: '🎶 Música ≫ Mostra a lista de músicas deste servidor.',
+            responses: {
+                noMusic: 'Eita, não tem nenhuma música na fila, só essa que você ta ouvindo agora...',
+                nextPage: 'Proxima página',
+                prevPage: 'Página anterior',
+                pages: 'Página {{}}',
+                noTime: 'O tempo para interagir acabou.'
+            }
+        },
+        play: {
+            name: 'tocar',
+            description: "🎶 Música ≫ Toca uma musica.",
+            responses: {
+                failed: 'Algo deu errado, perdão',
+                matches: 'Não foi encontrado nenhum resultado para sua busca.',
+                playlist: 'A playlist `{{}}` foi adicionada a fila.',
+                song: 'A música `{{}}` foi adicionada a fila.'
+            },
+            options: [{
+                name: 'musica',
+                description: '⭐ Opção ≫ A musica que irá tocar.'
+            }]
+        },
+        skip: {
+            name: "pular",
+            description: "🎶 Musica ≫ pula a música atual.",
+            responses: {
+                more: 'Foram puladas `{{}}` músicas.',
+                less: 'A música foi pulada'
+            },
+            options: [{
+                name: 'quatidade',
+                description: '⭐ Opção ≫ A quantidade de músicas que você quer pular.'
+            }]
+        },
+        volume: {
+            name: "volume",
+            description: "🎶 Music ≫ Troque o volume da música",
+            responses: {
+                volume: 'Volume alterado para `{{}}%`.'
+            },
+            options: [{
+                name: 'volume',
+                description: '⭐ Option ≫ Novo volume.'
+            }]
         },
         info: {
             name: 'info',
@@ -50,35 +108,5 @@ export const Portuguese = {
                 pingMessage: `🏓 O tempo de resposta foi de **{{}}ms**\n🐢 A latência da API é **{{}}ms**`
             }
         },
-        adddrawing: {
-            name: "adddesenho",
-            description: "👑 Dono ≫ Adiciona um novo desenho a base de desenhos do bot.",
-            responses: {
-                downloading: "Baixando a foto...",
-                success: "O desenho foi adicionado!\nID: {{}}\n total: {{}} Documentos"
-            },
-            options: [{
-                name: "imagem",
-                description: "O arquivo do desenho pra ser adicionado."
-            }, {
-                name: "resposta",
-                description: "A resposta para essa imagem."
-            }, {
-                name: "categoria",
-                description: "A categoria em que a foto sem encaixa."
-            }]
-        },
-        play: {
-            name: "iniciar",
-            description: "👑 Jogo ≫ Iniciar uma partida de acerto do desenho."
-        },
-        rank: {
-            name: "placar",
-            description: "🏆 Jogo ≫ Mostra os servidores com mais acertos",
-            responses: {
-                embedTitle: "🏆 SERVIDORES COM MAIS ACERTOS",
-                embedDescription: "{{}} - **{{}}** Acertos"
-            }
-        }
     }
 }

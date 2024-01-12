@@ -14,6 +14,8 @@ class CommandManager {
 
     }
 
+
+
     async loadCommand() {
         try {
             debug.Alert("Começando a carregar os comandos em barra.")
@@ -25,6 +27,7 @@ class CommandManager {
                     const command = new CommandClass(this.client)
                     if (command instanceof Command) {
                         this.commands.set(command.data.name, command)
+                        // console.log(command.data.toJSON())
                         this.commandsData.push(command.data)
                         debug.Log(`O comando "${command.data.name}" foi carregado.`)
                     }
@@ -38,10 +41,14 @@ class CommandManager {
     async registryCommands() {
         try {
             debug.Alert('Começando a registrar os comandos em barra na API.')
-            this.client.application?.commands.set(this.commandsData);
-            debug.Log(`Foram registrados ${this.commandsData.length} comando(s) em barra na API.`)
+            const rest = new REST().setToken(process.env.TOKEN as string);
+            const data = await rest.put(
+                Routes.applicationCommands(process.env.CLIENTID as string),
+                { body: this.commandsData },
+            ) as any;
+            debug.Log(`Foram registrados ${data.length}/${this.commandsData.length} comando(s) em barra na API.`)
         } catch (error) {
-            if (error instanceof Error) debug.Error(`Ocorreu um erro ao registrar os comandos na API do Discord. Erro: ${error.message}`)
+            if (error instanceof Error) debug.Error(`Ocorreu um erro ao registrar os comandos na API do Discord. Erro: ${error.stack}`)
         }
     }
 

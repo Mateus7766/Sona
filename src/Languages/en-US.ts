@@ -1,29 +1,87 @@
 export const English = {
     commands: {
-        forca: {
-            name: 'hangman',
-            description: '🎈 Fun ≫ Hangman game.',
+        default: {
+            inVoiceChannel: 'You need to be connected to a voice channel.',
+            isPlaying: 'There is no music playing.',
+            sameVoiceChannel: 'You are in a different voice channel than mine.',
+            defaultEmbedTitle: '{{}} | Music System'
+        },
+        nowplaying: {
+            name: 'nowplaying',
+            description: '🎶 Music ≫ Displays the current song.'
+        },
+        pause: {
+            name: 'pause',
+            description: '🎶 Music ≫ Pauses the current song.',
             responses: {
-                error: 'Something went wrong, sorry...',
-                hint: 'No hint.',
-                lostMessage: '😭 Too bad! Time ran out or you just didn\'t guess it. (`{{}}`)',
-                winMessage: '🥳 Congratulations! You guessed the word. (`{{}}`)',
-                embedTitle: 'Hangman Game',
-                embedLetter: 'Letters',
-                embedHint: 'Hint',
-                embedTryss: 'Attempts',
-                embedNone: 'None',
-                embedForca: 'Hangman'
+                errEmbed: 'The music is already paused.',
+                successEmbed: '⏸ Music paused.'
             }
-        },        
-        cat: {
-            name: 'cat',
-            description: '🎈 Fun ≫ Shows a random cat.'
-        },        
-        dog: {
-            name: 'dog',
-            description: '🎈 Fun ≫ Shows a random dog.'
-        },        
+        },
+        resume: {
+            name: 'resume',
+            description: '🎶 Music ≫ Resumes playing the current song.',
+            responses: {
+                errEmbed: 'The music is already playing.',
+                successEmbed: '▶ Resuming playback.'
+            }
+        },
+        shuffle: {
+            name: 'shuffle',
+            description: '🎶 Music ≫ Shuffles the order of songs.',
+            responses: {
+                errEmbed: 'Oops, there are no other songs in the queue, only the one you are currently listening to...',
+                successEmbed: 'The queue has been shuffled.'
+            }
+        },
+        queue: {
+            name: 'queue',
+            description: '🎶 Music ≫ Shows the list of songs in this server.',
+            responses: {
+                noMusic: 'Oops, there are no other songs in the queue, only the one you are currently listening to...',
+                nextPage: 'Next page',
+                prevPage: 'Previous page',
+                pages: 'Page {{}}',
+                noTime: 'The time to interact has ended.'
+            }
+        },
+        play: {
+            name: 'play',
+            description: "🎶 Music ≫ Plays a song.",
+            responses: {
+                failed: 'Something went wrong, sorry.',
+                matches: 'No results found for your search.',
+                playlist: 'The playlist `{{}}` has been added to the queue.',
+                song: 'The song `{{}}` has been added to the queue.'
+            },
+            options: [{
+                name: 'song',
+                description: '⭐ Option ≫ The song to play.'
+            }]
+        },
+        skip: {
+            name: "skip",
+            description: "🎶 Music ≫ Skips the current song.",
+            responses: {
+                more: '{{}} songs have been skipped.',
+                less: 'The song has been skipped.'
+            },
+            options: [{
+                name: 'quantity',
+                description: '⭐ Option ≫ The number of songs you want to skip.'
+            }]
+        },
+        volume: {
+            name: "volume",
+            description: "🎶 Music ≫ Change the volume of the music",
+            responses: {
+                volume: 'Volume changed to `{{}}%`.'
+            },
+            options: [{
+                name: 'volume',
+                description: '⭐ Option ≫ New volume.'
+            }]
+        },
         info: {
             name: 'info',
             description: '💻 Normal ≫ Displays information about the Bot.',
@@ -41,7 +99,7 @@ export const English = {
                     src: 'Source Code'
                 }
             }
-        },        
+        },
         ping: {
             name: "ping",
             description: "💻 Normal ≫ Show my ping.",
@@ -50,35 +108,5 @@ export const English = {
                 pingMessage: `🏓 Response time was **{{}}ms**\n🐢 API latency is **{{}}ms**`
             }
         },
-        adddrawing: {
-            name: "adddrawing",
-            description: "👑 Owner ≫ Append a new drawing in the drawings base of the bot.",
-            responses: {
-                downloading: "Downloading the image...",
-                success: "The drawing as ben sucefily added!\nID: {{}}\ntotal: {{}} Documents"
-            },
-            options: [{
-                name: "image",
-                description: "The file of picture for add."
-            }, {
-                name: "response",
-                description: "The response for tghe image."
-            }, {
-                name: "category",
-                description: "The category of image."
-            }]
-        },
-        play: {
-            name: "play",
-            description: "🎲 Game ≫ Guess the drawing game begins."
-        },
-        rank: {
-            name: "scoreboard",
-            description: "🏆 Game ≫ Shows the servers with the correct answers",
-            responses: {
-                embedTitle: "🏆 SERVER WITH THE MOST CORRECT ANSWERS",
-                embedDescription: "{{}} - **{{}}** correct answers"
-            }
-          }
     }
 }
