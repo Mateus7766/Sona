@@ -12,7 +12,7 @@ class LavalinkCommand extends Command {
         })
         .setDescription(English.commands.lavalink.description)
         .setDescriptionLocalizations({
-            "pt-BR": Portuguese.commands.lavalink.name
+            "pt-BR": Portuguese.commands.lavalink.description
         })
     options = { inVoiceChannel: false, isPlaying: false, sameVoiceChannel: false }
     async execute(interaction: ChatInputCommandInteraction) {

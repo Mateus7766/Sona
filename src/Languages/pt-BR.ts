@@ -7,6 +7,40 @@ export const Portuguese = {
             sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
             defaultEmbedTitle: '{{}} | Sistema de música'
         },
+        filters: {
+            name: 'filtros',
+            description: '🎶 Música ≫ Adiciona ou remove um efeito da música.',
+            responses: {
+                disableMessage: 'Se tinha algum filtro, ele foi removido.',
+                enable: 'O filtro **{{}}** foi ativado, se tinha outro ativo ele foi desativado.\n\n`{{}}`',
+                welcome: 'Bem vindo ao painel de filtros, selecione o filtro que deseja ativar, preste atenção na descrição deles.',
+                choice: 'Escolha um filtro',
+                disableDescr: 'Desativar filtros de áudio.',
+                karaokeDescr: 'Remove a voz do cantor, criando um efeito de karaoke no áudio.',
+                tremoloDescr: 'Aplica um efeito de tremolo ao áudio, alterando a amplitude das ondas sonoras.',
+                vibratoDescr: 'Aplica um efeito de vibrato ao áudio, modulando a frequência das ondas sonoras.',
+                bassboostDescr: 'Aumenta os tons graves (baixos) no áudio para um efeito de reforço de graves.',
+                nightcoreDescr: 'Acelera o áudio e ajusta o pitch para criar um efeito Nightcore, popular em músicas eletrônicas.',
+                superfastDescr: 'Ajusta a velocidade, pitch e taxa do áudio para criar um efeito de reprodução super rápida.',
+                errapeDescr: 'Aplica um efeito de equalização específico para um estilo chamado "errape".',
+                darthvaderDescr: 'Ajusta a velocidade, pitch e taxa do áudio para criar um efeito similar à voz de Darth Vader.',
+                loveNightcoreDescr: 'Aplica um efeito Love Nightcore, uma variação mais suave do efeito Nightcore.',
+                vaporewaveDescr: 'Aplica um conjunto de efeitos, incluindo equalização e tremolo, para criar um estilo "Vaporewave".',
+                partyDescr: 'Aplica um efeito equalizador específico para criar uma atmosfera festiva no áudio.',
+                disable: 'Desativar',
+                karaoke: 'Karaoke',
+                tremolo: 'Tremolo',
+                vibrato: 'Vibrato',
+                bassboost: 'Bassboost',
+                nightcore: 'Nightcore',
+                superfast: 'Superfast',
+                errape: 'Errape',
+                darthvado: 'Darthvado',
+                lovenightcore: 'Lovenightcore',
+                vaporewave: 'Vaporewave',
+                party: 'Party'
+            }
+        },
         lavalink: {
             name: 'lavalink',
             description: '🎶 Música ≫ mostra informações sobre os servidores de música.'

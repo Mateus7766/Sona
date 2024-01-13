@@ -13,7 +13,7 @@ class PauseCommand extends Command {
         })
         .setDescription(English.commands.nowplaying.description)
         .setDescriptionLocalizations({
-            "pt-BR": Portuguese.commands.nowplaying.name
+            "pt-BR": Portuguese.commands.nowplaying.description
         })
     options = { inVoiceChannel: true, isPlaying: true, sameVoiceChannel: false }
     async execute(interaction: ChatInputCommandInteraction) {

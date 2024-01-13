@@ -12,7 +12,7 @@ class JoinCommand extends Command {
         })
         .setDescription(English.commands.join.description)
         .setDescriptionLocalizations({
-            "pt-BR": Portuguese.commands.join.name
+            "pt-BR": Portuguese.commands.join.description
         })
     options = { inVoiceChannel: true, isPlaying: false, sameVoiceChannel: false }
     async execute(interaction: ChatInputCommandInteraction) {
