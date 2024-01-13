@@ -7,6 +7,10 @@ export const Portuguese = {
             sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
             defaultEmbedTitle: '{{}} | Sistema de música'
         },
+        lavalink: {
+            name: 'lavalink',
+            description: '🎶 Música ≫ mostra informações sobre os servidores de música.'
+        },
         join: {
             name: 'entrar',
             description: '🎶 Música ≫ Troca o canal onde a música ta tocando ou entra em um canal.',

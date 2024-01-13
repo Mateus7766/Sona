@@ -7,6 +7,10 @@ export const English = {
             sameVoiceChannel: 'You are in a different voice channel than mine.',
             defaultEmbedTitle: '{{}} | Music System'
         },
+        lavalink: {
+            name: 'lavalink',
+            description: '🎶 Music ≫ Show informations about music servers.'
+        },
         join: {
             name: 'join',
             description: '🎶 Music ≫ Switches to the channel where the music is playing or joins a channel.',
