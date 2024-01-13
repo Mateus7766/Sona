@@ -6,10 +6,11 @@ class Player extends Vulkava {
         super({
             nodes: [
                 {
-                    id: 'First Node',
-                    hostname: '127.0.0.1',
-                    port: 80,
-                    password: 'asuperpassword'
+                    id: 'Jogo do tigrinho',
+                    hostname: '3d5a209a-c0f1-4161-af42-d57fbf69095e-00-e9tb3hcc1wig.kirk.replit.dev',
+                    port: 443,
+                    password: process.env['LAVASERVERPASSWD1'],
+                    secure: true
                 }
             ], sendWS(guildId, payload) {
                 client.guilds.cache.get(guildId)?.shard.send(payload);

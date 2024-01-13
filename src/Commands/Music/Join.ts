@@ -34,6 +34,8 @@ class JoinCommand extends Command {
             } else if(player) {
                 embed.setDescription(this.t(this.language.join.responses.diferentChannel, interaction.guild.members.me.voice.channel, interaction.member.voice.channel))
                 player.setVoiceChannel(interaction.member.voice.channelId as string)
+                player.pause(true)
+                player.pause(false)
             } else {
                 embed.setDescription(this.t(this.language.join.responses.noChannel, interaction.member.voice.channel))
                 const player = this.client.player.createPlayer({
@@ -42,8 +44,9 @@ class JoinCommand extends Command {
                     textChannelId: interaction.channel?.id,
                     selfDeaf: true,
                     queue: new DefaultQueue()
-                });
+                })
                 player.connect()
+                // player.pause(false)
             }
         } else {
             embed.setDescription(this.t(this.language.join.responses.noChannel, interaction.member.voice.channel))
@@ -55,6 +58,7 @@ class JoinCommand extends Command {
                 queue: new DefaultQueue()
             });
             player.connect()
+            // player.pause(false)
         }
 
         await interaction.editReply({
