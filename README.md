@@ -1,9 +1,9 @@
 
 <h1 align="center">
   <br>
-  <img src="./.github/images/sona.png" alt="Sona" width="200">
+  <img src="./.github/images/earth.png" alt="Earth" width="200">
   <br>
-  Sona
+  Earth
   <br>
 </h1>
 
@@ -18,11 +18,11 @@
 
  ```
  $ node dist/index
-   ____
- / ___|  ___  _ __   __ _
- \___ \ / _ \| '_ \ / _` |
-  ___) | (_) | | | | (_| |
- |____/ \___/|_| |_|\__,_|
+  _____           _   _     
+ | ____|__ _ _ __| |_| |__  
+ |  _| / _` | '__| __| '_ \ 
+ | |__| (_| | |  | |_| | | |
+ |_____\__,_|_|   \__|_| |_|
  ```
 ## Introdução
 
