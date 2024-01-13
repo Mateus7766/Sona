@@ -3,7 +3,6 @@ import { Debug } from "../../Sructures/Debug";
 import { Player } from "vulkava";
 import { EmbedBuilder, REST } from "discord.js";
 
-const debug = new Debug()
 
 class QueueEnd extends PlayerEvents {
     name = 'queueEnd'

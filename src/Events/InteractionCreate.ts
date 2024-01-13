@@ -1,5 +1,5 @@
 import { Event } from "../Sructures/Event";
-import { Events, ChatInputCommandInteraction, BaseInteraction, EmbedBuilder, ColorResolvable } from "discord.js"
+import { Events, ChatInputCommandInteraction, BaseInteraction, EmbedBuilder, ColorResolvable, ChannelType } from "discord.js"
 import { Debug } from "../Sructures/Debug";
 
 const debug = new Debug()
@@ -17,6 +17,7 @@ class InteractionCreateEvent extends Event {
                 command.setLanguage = interaction.locale
                 if (command.options) {
                     const player = this.client.player.players.get(interaction.guildId)
+                  
                     if (command.options.inVoiceChannel && !interaction.member.voice.channelId) {
                         return interaction.followUp({
                             embeds: [this.sendEmbed(command.language.default.inVoiceChannel, 'Red', command.t(command.language.default.defaultEmbedTitle, this.client.user?.username))]
@@ -32,6 +33,12 @@ class InteractionCreateEvent extends Event {
                     if (command.options.sameVoiceChannel && player && this.client.channels.cache.get(player.voiceChannelId)?.id != interaction.member.voice.channel?.id) {
                         return interaction.followUp({
                             embeds: [this.sendEmbed(command.language.default.sameVoiceChannel, 'Red', command.t(command.language.default.defaultEmbedTitle, this.client.user?.username))]
+                        })
+                    }
+
+                    if(interaction.member.voice.channel?.type != ChannelType.GuildVoice) {
+                        return interaction.followUp({
+                            embeds: [this.sendEmbed(command.language.default.stageChannel, 'Red', command.t(command.language.default.defaultEmbedTitle, this.client.user?.username))]
                         })
                     }
                 }

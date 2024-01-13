@@ -1,10 +1,27 @@
 export const English = {
     commands: {
         default: {
+            stageChannel: "This channel type is not supported.",
             inVoiceChannel: 'You need to be connected to a voice channel.',
             isPlaying: 'There is no music playing.',
             sameVoiceChannel: 'You are in a different voice channel than mine.',
             defaultEmbedTitle: '{{}} | Music System'
+        },
+        join: {
+            name: 'join',
+            description: '🎶 Music ≫ Switches to the channel where the music is playing or joins a channel.',
+            responses: {
+                sameChannel: 'I am already in this channel.',
+                diferentChannel: 'Leaving channel {{}} and joining channel {{}}.',
+                noChannel: 'Joining channel {{}}.'
+            }
+        },
+        stop: {
+            name: 'stop',
+            description: '🎶 Music ≫ Stop playing and leave the voice channel.',
+            responses: {
+                stop: '💥 The music player has been destroyed.'
+            }
         },
         nowplaying: {
             name: 'nowplaying',

@@ -1,5 +1,5 @@
 import { Command } from "../../Sructures/Command";
-import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, CommandInteraction, ClientUser, User, ColorResolvable } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, ColorResolvable } from "discord.js";
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { DefaultQueue } from "vulkava";

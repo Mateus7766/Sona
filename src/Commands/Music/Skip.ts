@@ -1,5 +1,5 @@
 import { Command } from "../../Sructures/Command";
-import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, CommandInteraction, ClientUser, User } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "discord.js";
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { Player } from "vulkava";

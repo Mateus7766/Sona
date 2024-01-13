@@ -1,10 +1,27 @@
 export const Portuguese = {
     commands: {
         default: {
+            stageChannel: 'Esse tipo de canal de voz não é suportado.',
             inVoiceChannel: 'Você precisa estar conectado em um canal de voz.',
             isPlaying: 'Não tem nenhuma música tocando.',
             sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
             defaultEmbedTitle: '{{}} | Sistema de música'
+        },
+        join: {
+            name: 'entrar',
+            description: '🎶 Música ≫ Troca o canal onde a música ta tocando ou entra em um canal.',
+            responses: {
+                sameChannel: 'Eu já estou nesse canal.',
+                diferentChannel: 'Saindo do canal {{}} e indo para o canal {{}}.',
+                noChannel: 'Entrando no canal {{}}.'
+            }
+        },
+        stop: {
+            name: 'parar',
+            description: '🎶 Música ≫ Para de tocar e sai do canal de voz.',
+            responses: {
+                stop: '💥 O player de música foi destruido.'
+            }
         },
         nowplaying: {
             name: 'tocandoagora',
