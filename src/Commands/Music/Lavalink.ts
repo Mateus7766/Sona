@@ -29,7 +29,7 @@ class LavalinkCommand extends Command {
 
         for(const node of nodes) {
             const ping = await node.ping()
-            desc += `\`\`\`yaml\nNode: ${node.identifier}\nState: ${states[node.state]}\nPlayers: ${node.stats.playingPlayers}\nPing: ${ping}ms\nJVM: ${node.versions?.JVM}\nBuild: ${node.versions?.BUILD}\`\`\``
+            desc += `\`\`\`yaml\nNode: ${node.identifier}\nState: ${states[node.state]}\nPlayers: ${node.stats.playingPlayers}\nPing: ${ping}ms\nJVM: ${node.versions?.JVM}\nBuild: ${node.versions?.BUILD}\nRegion: ${node.options.region}\`\`\``
         }
 
         const embed = new EmbedBuilder()
