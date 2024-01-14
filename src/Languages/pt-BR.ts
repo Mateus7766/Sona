@@ -1,4 +1,15 @@
 export const Portuguese = {
+    events: {
+        default: {
+            defaultEmbedTitle: '{{}} | Sistema de música'
+        },
+        trackStart: {
+            success: 'Começando a tocar `{{}}`.'
+        },
+        queueEnd: {
+            success: 'A fila de músicas está vazia, saindo do canal de voz e destruindo o player...'
+        }
+    },
     commands: {
         default: {
             stageChannel: 'Esse tipo de canal de voz não é suportado.',

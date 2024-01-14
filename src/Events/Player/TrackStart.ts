@@ -1,7 +1,7 @@
 import { PlayerEvents } from "../../Sructures/PlayerEvents";
 import { Debug } from "../../Sructures/Debug";
 import { Player, Track } from "vulkava";
-import { EmbedBuilder, REST } from "discord.js";
+import { EmbedBuilder, Guild, REST } from "discord.js";
 
 const debug = new Debug()
 
@@ -19,14 +19,18 @@ class TrackStart extends PlayerEvents {
             console.log(e)
         })
         
+        const guild = this.client.guilds.cache.get(player.guildId)
+        if(!guild) return 0;
+
+        this.setLanguage = guild.preferredLocale
 
         const embed = new EmbedBuilder()
             .setAuthor({
                 iconURL: this.client.user?.displayAvatarURL(),
-                name: `${this.client.user?.displayName} | Sistema de música` || 'undefined'
+                name: this.t(this.language.default.defaultEmbedTitle, this.client.user?.username)
             })
             .setColor('White')
-            .setDescription(`Começando a tocar \`${track.title}\`.`)
+            .setDescription(this.t(this.language.trackStart.success, track.title))
             .setTimestamp()
 
         if (player.textChannelId) {

@@ -21,10 +21,10 @@ class QueueEnd extends PlayerEvents {
         const embed = new EmbedBuilder()
             .setAuthor({
                 iconURL: this.client.user?.displayAvatarURL(),
-                name: `${this.client.user?.displayName} | Sistema de música` || 'undefined'
+                name: this.t(this.language.default.defaultEmbedTitle, this.client.user?.username)
             })
             .setColor('Yellow')
-            .setDescription(`A fila de músicas está vazia, saindo do canal de voz e destruindo o player...`)
+            .setDescription(this.language.queueEnd.success)
             .setTimestamp()
 
             player.destroy()

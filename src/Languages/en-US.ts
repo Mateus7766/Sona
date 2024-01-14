@@ -1,4 +1,15 @@
 export const English = {
+    events: {
+        default: {
+            defaultEmbedTitle: '{{}} | Music System'
+        },
+        trackStart: {
+            success: 'Starting to play `{{}}`.'
+        },
+        queueEnd: {
+            success: 'The song queue is empty, leaving the voice channel and destroying the player...'
+        }
+    },
     commands: {
         default: {
             stageChannel: "This channel type is not supported.",
