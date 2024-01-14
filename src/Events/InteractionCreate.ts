@@ -36,7 +36,7 @@ class InteractionCreateEvent extends Event {
                         })
                     }
 
-                    if(interaction.member.voice.channel?.type != ChannelType.GuildVoice) {
+                    if(command.options.inVoiceChannel && interaction.member.voice.channel?.type != ChannelType.GuildVoice) {
                         return interaction.followUp({
                             embeds: [this.sendEmbed(command.language.default.stageChannel, 'Red', command.t(command.language.default.defaultEmbedTitle, this.client.user?.username))]
                         })
