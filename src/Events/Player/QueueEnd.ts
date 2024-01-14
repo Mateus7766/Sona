@@ -18,6 +18,12 @@ class QueueEnd extends PlayerEvents {
             console.log(e)
         })
 
+        const guild = this.client.guilds.cache.get(player.guildId)
+        if(!guild) return 0;
+
+        this.setLanguage = guild.preferredLocale
+
+
         const embed = new EmbedBuilder()
             .setAuthor({
                 iconURL: this.client.user?.displayAvatarURL(),
