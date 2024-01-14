@@ -134,7 +134,7 @@ export const Portuguese = {
                 less: 'A música foi pulada'
             },
             options: [{
-                name: 'quatidade',
+                name: 'quantidade',
                 description: '⭐ Opção ≫ A quantidade de músicas que você quer pular.'
             }]
         },
