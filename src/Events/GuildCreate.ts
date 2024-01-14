@@ -34,7 +34,7 @@ class InteractionCreateEvent extends Event {
             const perms = guild.members.me?.permissionsIn(channel)
             if (perms?.has(PermissionFlagsBits.SendMessages)) {
                 channel.send({
-                    embeds: [embed]
+                    embeds: [embed], content: 'https://discord.gg/spT8zNuvFH'
                 }).catch(e => {})
             }
         }
