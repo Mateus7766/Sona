@@ -23,7 +23,7 @@ class SkipCommand extends Command {
                 .setDescriptionLocalizations({
                     "pt-BR": Portuguese.commands.remove.options[0].description
                 })
-                .setRequired(false))
+                .setRequired(true))
     options = { inVoiceChannel: true, isPlaying: true, sameVoiceChannel: true };
     async execute(interaction: ChatInputCommandInteraction) {
         if (!interaction.inCachedGuild()) return 0;
