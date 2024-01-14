@@ -7,6 +7,19 @@ export const English = {
             sameVoiceChannel: 'You are in a different voice channel than mine.',
             defaultEmbedTitle: '{{}} | Music System'
         },
+        remove: {
+            name: 'remove',
+            description: '🎶 Music ≫ Removes a song from the queue.',
+            responses: {
+                err: 'There is no song at that position.',
+                success: 'The song `{{}}` has been removed from the queue.'
+            },
+            options: [{
+                name: 'song_position',
+                description: '⭐ Option ≫ the position of the song in the queue.'
+            }]
+
+        },
         filters: {
             name: 'filters',
             description: '🎶 Music ≫ Adds or removes an effect from the music.',

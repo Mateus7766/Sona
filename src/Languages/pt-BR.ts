@@ -7,6 +7,18 @@ export const Portuguese = {
             sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
             defaultEmbedTitle: '{{}} | Sistema de música'
         },
+        remove: {
+            name: 'remover',
+            description: '🎶 Música ≫ Remove uma música da fila.',
+            responses: {
+                err: 'Não tem nenhuma música nessa posição.',
+                success: 'A música `{{}}` foi removida da fila.'
+            },
+            options: [{
+                name: 'posicao_musica',
+                description: '⭐ Option ≫ a posição da música na fila.'
+            }]
+        },
         filters: {
             name: 'filtros',
             description: '🎶 Música ≫ Adiciona ou remove um efeito da música.',
