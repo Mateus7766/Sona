@@ -1,9 +1,6 @@
 import { PlayerEvents } from "../../Sructures/PlayerEvents";
-import { Debug } from "../../Sructures/Debug";
 import { Player, Track } from "vulkava";
-import { EmbedBuilder, Guild, REST } from "discord.js";
-
-const debug = new Debug()
+import { EmbedBuilder } from "discord.js";
 
 class TrackStart extends PlayerEvents {
     name = 'trackStart'

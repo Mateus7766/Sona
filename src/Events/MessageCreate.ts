@@ -1,12 +1,18 @@
 import { Event } from "../Sructures/Event";
-import { Events, ChatInputCommandInteraction, Message, User } from "discord.js"
+import { Events, Message, User } from "discord.js"
 import { Debug } from "../Sructures/Debug";
 
-const debug = new Debug()
-
+const messagesList: Message[] = []
 class MessageCreateEvent extends Event {
     name = Events.MessageCreate
     async execute(msg: Message) {
+        if(msg.author.id == this.client.user?.id) {
+            setTimeout(() => {
+                if(msg.deletable) msg.delete().catch(e => {
+                    console.log('Não consegui apagar a mensagem.')
+                })
+            }, 120 * 1000)
+        }
         if(msg.author.bot || msg.author.system) return 0;
         try {
             if (msg.mentions.has(this.client.user as User) && msg.guild) {
