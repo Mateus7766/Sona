@@ -3,6 +3,7 @@ import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, REST } 
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { Player} from "vulkava";
+import config from "../../config";
 
 class StopCommand extends Command {
     data = new SlashCommandBuilder()
@@ -19,15 +20,7 @@ class StopCommand extends Command {
         if (!interaction.inCachedGuild()) return 0;
         const player = this.client.player.players.get(interaction.guild.id) as Player
 
-        const rest = new REST()
-        .setToken(process.env.TOKEN as string)
-        rest.put(`/channels/${player.voiceChannelId}/voice-status`, {
-            body: {
-                status: ``,
-            }
-        }).catch(e => {
-            console.log(e)
-        })
+       
 
         const embed = new EmbedBuilder()
             .setAuthor({

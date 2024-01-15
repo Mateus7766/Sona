@@ -1,28 +1,34 @@
 import { Vulkava } from "vulkava";
 import { CustomClient } from "./Client";
+import config from "../config";
 
 class Player extends Vulkava {
     constructor(readonly client: CustomClient) {
         super({
             nodes: [
                 {
-                    id: 'Jogo do tigrinho',
-                    hostname: process.env['LAVASERVERHOST1'] as string,
+                    id: 'Produtos do renato cariani',
+                    hostname: config.lava_host1,
                     port: 443,
-                    password: process.env['LAVASERVERPASSWD1'],
+                    password: config.lava_password1,
                     secure: true,
                     region: 'USA'
                 },
                 {
-                    id: 'Gelo agachando',
-                    hostname: process.env['LAVASERVERHOST2'] as string,
+                    id: 'Jogo do tigrinho',
+                    hostname: config.lava_host2,
                     port: 443,
-                    password: process.env['LAVASERVERPASSWD2'],
+                    password: config.lava_password2,
                     secure: true,
                     region: 'USA'
-                }
+                },
             ], sendWS(guildId, payload) {
                 client.guilds.cache.get(guildId)?.shard.send(payload);
+            },
+            spotify: {
+                clientId: config.spotifyId,
+                clientSecret: config.spotifySecret,
+                market: 'BR'
             }
         })
     }

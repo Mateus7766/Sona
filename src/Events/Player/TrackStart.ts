@@ -9,18 +9,11 @@ class TrackStart extends PlayerEvents {
     name = 'trackStart'
     async execute(player: Player, track: Track) {
 
-        const rest = new REST()
-        .setToken(process.env.TOKEN as string)
-        rest.put(`/channels/${player.voiceChannelId}/voice-status`, {
-            body: {
-                status: `<a:tocando:1195456765362442330> ${track.title}`,
-            }
-        }).catch(e => {
-            console.log(e)
-        })
-        
+        await this.client.utils.setVoiceChannelStatus(player, `<a:tocando:1195456765362442330> ${track.title}`);
+
+
         const guild = this.client.guilds.cache.get(player.guildId)
-        if(!guild) return 0;
+        if (!guild) return 0;
 
         this.setLanguage = guild.preferredLocale
 

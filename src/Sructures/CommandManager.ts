@@ -4,6 +4,7 @@ import { join } from "path";
 import { Debug } from "./Debug";
 import { REST, Routes, SlashCommandBuilder } from "discord.js"
 import { CustomClient } from "./Client";
+import config from "../config";
 
 const debug = new Debug()
 
@@ -13,7 +14,6 @@ class CommandManager {
     constructor(readonly commandsFolder: string, readonly client: CustomClient) {
 
     }
-
 
 
     async loadCommand() {
@@ -41,9 +41,9 @@ class CommandManager {
     async registryCommands() {
         try {
             debug.Alert('Começando a registrar os comandos em barra na API.')
-            const rest = new REST().setToken(process.env.TOKEN as string);
+            const rest = new REST().setToken(config.token);
             const data = await rest.put(
-                Routes.applicationCommands(process.env.CLIENTID as string),
+                Routes.applicationCommands(config.clientid),
                 { body: this.commandsData },
             ) as any;
             debug.Log(`Foram registrados ${data.length}/${this.commandsData.length} comando(s) em barra na API.`)

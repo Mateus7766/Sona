@@ -7,22 +7,12 @@ import { EmbedBuilder, REST } from "discord.js";
 class QueueEnd extends PlayerEvents {
     name = 'queueEnd'
     async execute(player: Player) {
+        await this.client.utils.setVoiceChannelStatus(player, '');
 
-        const rest = new REST()
-        .setToken(process.env.TOKEN as string)
-        rest.put(`/channels/${player.voiceChannelId}/voice-status`, {
-            body: {
-                status: ``,
-            }
-        }).catch(e => {
-            console.log(e)
-        })
 
         const guild = this.client.guilds.cache.get(player.guildId)
-        if(!guild) return 0;
-
+        if (!guild) return 0;
         this.setLanguage = guild.preferredLocale
-
 
         const embed = new EmbedBuilder()
             .setAuthor({
@@ -33,7 +23,7 @@ class QueueEnd extends PlayerEvents {
             .setDescription(this.language.queueEnd.success)
             .setTimestamp()
 
-            player.destroy()
+        player.destroy()
 
         if (player.textChannelId) {
             const channel = this.client.channels.cache.get(player.textChannelId)
