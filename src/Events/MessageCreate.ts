@@ -1,11 +1,15 @@
 import { Event } from "../Sructures/Event";
-import { Events, Message, User } from "discord.js"
+import { ApplicationCommand, Events, Message, User } from "discord.js"
 import { Debug } from "../Sructures/Debug";
 
 const messagesList: Message[] = []
 class MessageCreateEvent extends Event {
     name = Events.MessageCreate
     async execute(msg: Message) {
+        if(!msg.inGuild()) return;
+
+        this.setLanguage = msg.guild.preferredLocale
+
         if(msg.author.id == this.client.user?.id) {
             setTimeout(() => {
                 if(msg.deletable) msg.delete().catch(e => {
@@ -16,7 +20,12 @@ class MessageCreateEvent extends Event {
         if(msg.author.bot || msg.author.system) return 0;
         try {
             if (msg.mentions.has(this.client.user as User) && msg.guild) {
-                await msg.reply(`:flag_us: Hi ${msg.author}, I'm ${this.client.user}. To see my commands type \`/\` on chat.\n\n:flag_br: Olá ${msg.author}, Eu sou a ${this.client.user}. Para ver meus comandos digite uma \`/\` no chat.`)
+                const command = await this.client.application?.commands.fetch() as Map<string, ApplicationCommand> || []
+                const values = Array.from(command.values())
+                const _command = values.find(value => value.name == 'help')
+                
+                
+                await msg.reply(this.t(this.language.messageCreate.mention, msg.author, this.client.user, _command ? `</${_command.name}:${_command.id}>` : '/help'))
             }
         } catch (e) {
             console.log(e)

@@ -37,8 +37,9 @@ export default new Command({
     async execute({ interaction, language, client, formatMessage }) {
         const query = interaction.options.getString(English.commands.playlist.options[0].name, true);
         const res = await client.player.search(query);
+        
 
-        if (!interaction.inCachedGuild()) return console.log('wtf');
+        if (!interaction.inCachedGuild()) return;
 
         if (res.loadType === "LOAD_FAILED") {
             return interaction.editReply({

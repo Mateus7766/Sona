@@ -39,7 +39,7 @@ export default new Command({
                 name: formatMessage(language.default.defaultEmbedTitle, client.user?.username)
             })
             .setColor('White')
-            .setDescription(amount > 1 ? language.skip.responses.more : language.skip.responses.less)
+            .setDescription(amount > 1 ? formatMessage(language.skip.responses.more, amount) : language.skip.responses.less)
             .setTimestamp();
 
         interaction.editReply({

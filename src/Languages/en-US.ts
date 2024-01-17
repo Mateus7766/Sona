@@ -1,5 +1,8 @@
 export const English = {
     events: {
+        messageCreate: {
+            mention: "Hi {{}}, I'm {{}}. To see my commands type {{}} on chat."
+        },
         default: {
             defaultEmbedTitle: '{{}} | Music System'
         },
@@ -20,7 +23,7 @@ export const English = {
         },
         playlist: {
             name: 'playlist',
-            description: 'Procura por uma playlist',
+            description: '🎶 Music ≫ Search for a playlist.',
             responses: {
                 failed: 'Something went wrong, sorry.',
                 matches: 'No results found for your search.',
@@ -28,8 +31,17 @@ export const English = {
             },
             options: [{
                 name: 'playlist',
-                description: '⭐ Opção ≫ A musica que irá tocar.'
+                description: '⭐ Opção ≫ The playlist name.'
             }]
+        },
+        help: {
+            name: 'help',
+            description: '💻 Normal ≫ Show my commands.',
+            responses: {
+                embedTitle: '{{}} | Help Command',
+                fieldTitle: 'How i change the bot language?',
+                fieldValue: 'It is not possible to change the language. **{{}}** automatically detects the correct language to respond to you and other members of the server.\n\nLanguage set for you: `{{}}`\nLanguage set for global messages: `{{}}`'
+            }
         },
         remove: {
             name: 'remove',

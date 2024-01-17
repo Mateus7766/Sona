@@ -1,5 +1,8 @@
 export const Portuguese = {
     events: {
+        messageCreate: {
+            mention: "Olá {{}}, Eu sou a {{}}. Para ver meus comandos digite {{}} no chat."
+        },
         default: {
             defaultEmbedTitle: '{{}} | Sistema de música'
         },
@@ -18,9 +21,18 @@ export const Portuguese = {
             sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
             defaultEmbedTitle: '{{}} | Sistema de música'
         },
+        help: {
+            name: 'ajuda',
+            description: '💻 Normal ≫ Mostra meus comandos.',
+            responses: {
+                embedTitle: '{{}} | Comando de ajuda',
+                fieldTitle: 'Como eu mudo o idioma do bot?',
+                fieldValue: 'Não é possivel alterar o idioma. A **{{}}** detecta automaticamente qual o idioma correto para responder você e outros membros do servidor.\n\nIdioma definido para você: `{{}}`\nIdioma definido para mensagens globais: `{{}}`'
+            }
+        },
         playlist: {
             name: 'playlist',
-            description: 'Procura por uma playlist',
+            description: '🎶 Música ≫ procure por uma playlist.',
             responses: {
                 failed: 'Algo deu errado, perdão',
                 matches: 'Não foi encontrado nenhum resultado para sua busca.',
@@ -28,7 +40,7 @@ export const Portuguese = {
             },
             options: [{
                 name: 'playlist',
-                description: '⭐ Opção ≫ A musica que irá tocar.'
+                description: '⭐ Opção ≫ O nome da playlist.'
             }]
         },
         remove: {
