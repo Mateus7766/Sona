@@ -18,6 +18,19 @@ export const English = {
             sameVoiceChannel: 'You are in a different voice channel than mine.',
             defaultEmbedTitle: '{{}} | Music System'
         },
+        playlist: {
+            name: 'playlist',
+            description: 'Procura por uma playlist',
+            responses: {
+                failed: 'Something went wrong, sorry.',
+                matches: 'No results found for your search.',
+                playlist: 'A playlist with `{{}}` songs has been added to the queue.',
+            },
+            options: [{
+                name: 'playlist',
+                description: '⭐ Opção ≫ A musica que irá tocar.'
+            }]
+        },
         remove: {
             name: 'remove',
             description: '🎶 Music ≫ Removes a song from the queue.',

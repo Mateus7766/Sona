@@ -1,5 +1,5 @@
 import { Event } from "../Sructures/Event";
-import { Events } from "discord.js";
+import { ActivityType, Events } from "discord.js";
 import figlet from "figlet";
 import chalk from "chalk";
 import { Guild } from "../Database/Models/Guild";
@@ -43,7 +43,8 @@ class ReadyEvent extends Event {
         const statusChanger = () => {
             const status = listOfStatus[Math.floor(Math.random() * listOfStatus.length)]
             this.client.user?.setActivity({
-                name: status
+                name: status,
+                type: ActivityType.Streaming
             })
         }
         setInterval(() => statusChanger(), 30000)

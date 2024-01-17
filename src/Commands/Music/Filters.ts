@@ -1,13 +1,13 @@
 import { Command } from "../../Sructures/Command";
-import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ComponentType } from "discord.js";
+import {  SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ComponentType } from "discord.js";
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { Player } from "vulkava";
 
 // Configurações dos filtros: https://github.com/Codes-nopr/erela.js-custom-filters/blob/main/plugin/plugin.js
 
-class LavalinkCommand extends Command {
-    data = new SlashCommandBuilder()
+export default new Command({
+    data: new SlashCommandBuilder()
         .setName(English.commands.filters.name)
         .setNameLocalizations({
             "pt-BR": Portuguese.commands.filters.name
@@ -15,96 +15,100 @@ class LavalinkCommand extends Command {
         .setDescription(English.commands.filters.description)
         .setDescriptionLocalizations({
             "pt-BR": Portuguese.commands.filters.description
-        })
-    options = { inVoiceChannel: true, isPlaying: true, sameVoiceChannel: true }
-    async execute(interaction: ChatInputCommandInteraction) {
-        if (!interaction.inCachedGuild()) return 0;
-        const player = this.client.player.players.get(interaction.guildId) as Player
+        }),
+    options: {
+        inVoiceChannel: true,
+        sameVoiceChannel: true,
+        isPlaying: true
+    },
+    async execute({ interaction, language, client, formatMessage }) {
+        if (!interaction.inCachedGuild()) return;
+        const player = client.player.players.get(interaction.guildId) as Player
 
         const embed = new EmbedBuilder()
             .setAuthor({
-                iconURL: this.client.user?.displayAvatarURL(),
-                name: this.t(this.language.default.defaultEmbedTitle, this.client.user?.username)
+                iconURL: client.user?.displayAvatarURL(),
+                name: formatMessage(language.default.defaultEmbedTitle, client.user?.username)
             })
             .setColor('White')
-            .setDescription(this.language.filters.responses.welcome)
+            .setDescription(language.filters.responses.welcome)
             .setTimestamp()
 
         const select = new StringSelectMenuBuilder()
             .setCustomId('starter')
-            .setPlaceholder(this.language.filters.responses.choice)
+            .setPlaceholder(language.filters.responses.choice)
             .setMaxValues(1)
             .addOptions(
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.disable)
+                    .setLabel(language.filters.responses.disable)
                     .setValue('disable')
-                    .setDescription(this.language.filters.responses.disableDescr)
+                    .setDescription(language.filters.responses.disableDescr)
                     .setEmoji('❌'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.karaoke)
+                    .setLabel(language.filters.responses.karaoke)
                     .setValue('karaoke')
-                    .setDescription(this.language.filters.responses.karaokeDescr)
+                    .setDescription(language.filters.responses.karaokeDescr)
                     .setEmoji('🎤'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.tremolo)
+                    .setLabel(language.filters.responses.tremolo)
                     .setValue('tremolo')
-                    .setDescription(this.language.filters.responses.tremoloDescr)
+                    .setDescription(language.filters.responses.tremoloDescr)
                     .setEmoji('🎸'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.vibrato)
+                    .setLabel(language.filters.responses.vibrato)
                     .setValue('vibrato')
-                    .setDescription(this.language.filters.responses.vibratoDescr)
+                    .setDescription(language.filters.responses.vibratoDescr)
                     .setEmoji('🎶'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.bassboost)
+                    .setLabel(language.filters.responses.bassboost)
                     .setValue('bassboost')
-                    .setDescription(this.language.filters.responses.bassboostDescr)
+                    .setDescription(language.filters.responses.bassboostDescr)
                     .setEmoji('🔊'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.nightcore)
+                    .setLabel(language.filters.responses.nightcore)
                     .setValue('nightcore')
-                    .setDescription(this.language.filters.responses.nightcoreDescr)
+                    .setDescription(language.filters.responses.nightcoreDescr)
                     .setEmoji('⚡'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.superfast)
+                    .setLabel(language.filters.responses.superfast)
                     .setValue('superfast')
-                    .setDescription(this.language.filters.responses.superfastDescr)
+                    .setDescription(language.filters.responses.superfastDescr)
                     .setEmoji('⏩'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.errape)
+                    .setLabel(language.filters.responses.errape)
                     .setValue('errape')
-                    .setDescription(this.language.filters.responses.errapeDescr)
+                    .setDescription(language.filters.responses.errapeDescr)
                     .setEmoji('🎛️'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.darthvado)
+                    .setLabel(language.filters.responses.darthvado)
                     .setValue('darthvado')
-                    .setDescription(this.language.filters.responses.darthvaderDescr)
+                    .setDescription(language.filters.responses.darthvaderDescr)
                     .setEmoji('🌑'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.lovenightcore)
+                    .setLabel(language.filters.responses.lovenightcore)
                     .setValue('lovenightcore')
-                    .setDescription(this.language.filters.responses.loveNightcoreDescr)
+                    .setDescription(language.filters.responses.loveNightcoreDescr)
                     .setEmoji('💖'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.vaporewave)
+                    .setLabel(language.filters.responses.vaporewave)
                     .setValue('vaporewave')
-                    .setDescription(this.language.filters.responses.vaporewaveDescr)
+                    .setDescription(language.filters.responses.vaporewaveDescr)
                     .setEmoji('🌊'),
 
                 new StringSelectMenuOptionBuilder()
-                    .setLabel(this.language.filters.responses.party)
+                    .setLabel(language.filters.responses.party)
                     .setValue('party')
-                    .setDescription(this.language.filters.responses.partyDescr)
+                    .setDescription(language.filters.responses.partyDescr)
                     .setEmoji('🎉')
             );
         const row = new ActionRowBuilder<StringSelectMenuBuilder>()
@@ -193,8 +197,8 @@ class LavalinkCommand extends Command {
                         break
                 }
                 const desc = i.component.toJSON().options.find(option => option.value == i.values[0])?.description
-                if (i.values[0] == 'desativar') await i.followUp(this.language.filters.responses.disableMessage)
-                else await i.followUp(this.t(this.language.filters.responses.enable, i.values[0], desc))
+                if (i.values[0] == 'desativar') await i.followUp(language.filters.responses.disableMessage)
+                else await i.followUp(formatMessage(language.filters.responses.enable, i.values[0], desc))
             })
             .on('end', async () => {
                 row.components[0].setDisabled(true)
@@ -203,7 +207,5 @@ class LavalinkCommand extends Command {
                     components: [row]
                 })
             })
-    }
-}
-
-export default LavalinkCommand;
+    },
+})

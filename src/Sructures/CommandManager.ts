@@ -1,10 +1,11 @@
 import { readdirSync } from "fs";
-import { Command } from "./Command";
+// import { Command } from "./Command";
 import { join } from "path";
 import { Debug } from "./Debug";
 import { REST, Routes, SlashCommandBuilder } from "discord.js"
 import { CustomClient } from "./Client";
 import config from "../config";
+import { Command } from "./Command";
 
 const debug = new Debug()
 
@@ -23,11 +24,9 @@ class CommandManager {
             for (const category of categorys) {
                 const commandsName = readdirSync(join(__dirname, '..', this.commandsFolder, category))
                 for (const commandName of commandsName) {
-                    const { default: CommandClass } = await import(join(__dirname, '..', this.commandsFolder, category, commandName))
-                    const command = new CommandClass(this.client)
+                    const { default: command } = await import(join(__dirname, '..', this.commandsFolder, category, commandName))
                     if (command instanceof Command) {
                         this.commands.set(command.data.name, command)
-                        // console.log(command.data.toJSON())
                         this.commandsData.push(command.data)
                         debug.Log(`O comando "${command.data.name}" foi carregado.`)
                     }

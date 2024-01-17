@@ -1,42 +1,54 @@
-import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js"
-import { CustomClient } from "./Client"
-import { Language } from "../Database/Interfaces/Guild"
-import { Portuguese } from "../Languages/pt-BR"
-import { English } from "../Languages/en-US"
+import { AutocompleteInteraction, ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { English } from "../Languages/en-US";
+import { Portuguese } from "../Languages/pt-BR";
+import { CustomClient } from "./Client";
 
-abstract class Command {
+interface AutoCompleteOptions {
+    interaction: AutocompleteInteraction,
+    language: typeof English.commands | typeof Portuguese.commands
     client: CustomClient
-    language = Portuguese.commands || English.commands
-    constructor(client: CustomClient) {
-        this.client = client
-    }
+    formatMessage: (message: string, ...args: any[]) => string
+}
 
-    abstract options: {
+interface ExecuteOptions {
+    interaction: ChatInputCommandInteraction
+    language: typeof English.commands | typeof Portuguese.commands
+    client: CustomClient
+    formatMessage: (message: string, ...args: any[]) => string
+}
+
+interface CommandData {
+    data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+    autoComplete?(data: AutoCompleteOptions): Promise<any>
+    execute: (data: ExecuteOptions) => Promise<any>
+    options?: {
         inVoiceChannel: boolean,
         isPlaying: boolean,
         sameVoiceChannel: boolean,
-    } | undefined
+    }
+}
 
-    abstract readonly data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
-    abstract execute(interaction: ChatInputCommandInteraction): Promise<any>
-
-    set setLanguage(language: any) {
-        const langObj = {
-            "pt-BR": Portuguese,
-            "en-US": English
-        }
-
-        if (Object.keys(langObj).includes(language)) {
-            this.language = langObj[language as Language].commands
-        } else this.language = langObj["en-US"].commands
+class Command {
+    data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+    execute: (data: ExecuteOptions) => Promise<any>
+    autoComplete?: (data: AutoCompleteOptions) => Promise<any>
+    options?: {
+        inVoiceChannel: boolean,
+        isPlaying: boolean,
+        sameVoiceChannel: boolean,
+    }
+    constructor(_data: CommandData) {
+        this.data = _data.data
+        this.autoComplete = _data.autoComplete
+        this.execute = _data.execute
+        this.options = _data.options
     }
 
-
-    t(message: string, ...args: any[]) {
-        for (let text of args) {
-            message = message.replace("{{}}", text)
+    formatMessage(message: string, ...args: any[]): string {
+        for (const argument of args) {
+            message = message.replace("{{}}", argument);
         }
-        return message
+        return message;
     }
 }
 

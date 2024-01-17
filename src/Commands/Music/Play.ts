@@ -1,11 +1,12 @@
 import { Command } from "../../Sructures/Command";
-import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder, ColorResolvable } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder, ColorResolvable } from "discord.js";
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { DefaultQueue } from "vulkava";
+import { getVideo } from 'ytubes'
 
-class PlayCommand extends Command {
-    data = new SlashCommandBuilder()
+export default new Command({
+    data: new SlashCommandBuilder()
         .setName(English.commands.play.name)
         .setNameLocalizations({
             "pt-BR": Portuguese.commands.play.name
@@ -23,25 +24,33 @@ class PlayCommand extends Command {
                 .setDescriptionLocalizations({
                     "pt-BR": Portuguese.commands.play.options[0].description
                 })
-                .setRequired(true))
-    options = { inVoiceChannel: true, isPlaying: false, sameVoiceChannel: true,};
-    async execute(interaction: ChatInputCommandInteraction) {
-
+                .setRequired(true)
+                .setAutocomplete(true)),
+    options: { inVoiceChannel: true, isPlaying: false, sameVoiceChannel: true, },
+    async autoComplete({ interaction }) {
+        interaction
+        const value = interaction.options.getFocused() || 'Music'
+        const videos = await getVideo(value, {
+            max: 20
+        })
+        await interaction.respond(videos.map((video, i) => ({ name: `[${++i}] ${video.title}`.slice(0, 98), value: video.link })))
+    },
+    async execute({ interaction, formatMessage, client, language }) {
         const query = interaction.options.getString(English.commands.play.options[0].name, true)
-        const res = await this.client.player.search(query);
+        const res = await client.player.search(query);
         if (!interaction.inCachedGuild()) return console.log('wtf')
 
         if (res.loadType === "LOAD_FAILED") {
             return interaction.editReply({
-                embeds: [this.sendEmbed(this.language.play.responses.failed, 'Red')]
+                embeds: [sendEmbed(language.play.responses.failed, 'Red')]
             });
         } else if (res.loadType === "NO_MATCHES") {
             return interaction.editReply({
-                embeds: [this.sendEmbed(this.language.play.responses.matches, 'Yellow')]
+                embeds: [sendEmbed(language.play.responses.matches, 'Yellow')]
             });
         }
 
-        const player = this.client.player.createPlayer({
+        const player = client.player.createPlayer({
             guildId: interaction.guild.id,
             voiceChannelId: interaction.member.voice.channelId as string,
             textChannelId: interaction.channel?.id,
@@ -58,7 +67,7 @@ class PlayCommand extends Command {
             }
 
             interaction.editReply({
-                embeds: [this.sendEmbed(this.t(this.language.play.responses.playlist, res.playlistInfo.name), 'Green')]
+                embeds: [sendEmbed(formatMessage(language.play.responses.playlist, res.playlistInfo.name), 'Green')]
             });
 
         } else {
@@ -66,24 +75,24 @@ class PlayCommand extends Command {
             track.setRequester(interaction.user);
             player.queue.add(track);
             interaction.editReply({
-                embeds: [this.sendEmbed(this.t(this.language.play.responses.song, track.title), 'Green')]
+                embeds: [sendEmbed(formatMessage(language.play.responses.song, track.title), 'Green')]
             });
         }
 
         if (!player.playing) await player.play();
-    }
 
-    sendEmbed(desc: string, color?: ColorResolvable) {
-        const embed = new EmbedBuilder()
-            .setAuthor({
-                iconURL: this.client.user?.displayAvatarURL(),
-                name: this.t(this.language.default.defaultEmbedTitle, this.client.user?.username)
-            })
-            .setColor(color || 'White')
-            .setDescription(desc)
-            .setTimestamp()
-        return embed;
-    }
-}
+        function sendEmbed(desc: string, color?: ColorResolvable) {
+            const embed = new EmbedBuilder()
+                .setAuthor({
+                    iconURL: client.user?.displayAvatarURL(),
+                    name: formatMessage(language.default.defaultEmbedTitle, client.user?.username)
+                })
+                .setColor(color || 'White')
+                .setDescription(desc)
+                .setTimestamp()
+            return embed;
+        }
 
-export default PlayCommand
+    },
+
+})

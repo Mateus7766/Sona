@@ -4,8 +4,8 @@ import { ChatInputCommandInteraction, SlashCommandBuilder, EmbedBuilder } from "
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 
-class PauseCommand extends Command {
-    data = new SlashCommandBuilder()
+export default new Command({
+    data: new SlashCommandBuilder()
         .setName(English.commands.pause.name)
         .setNameLocalizations({
             "pt-BR": Portuguese.commands.pause.name
@@ -13,19 +13,23 @@ class PauseCommand extends Command {
         .setDescription(English.commands.pause.description)
         .setDescriptionLocalizations({
             "pt-BR": Portuguese.commands.pause.description
-        })
-    options = { inVoiceChannel: true, isPlaying: true, sameVoiceChannel: true, };
-    async execute(interaction: ChatInputCommandInteraction) {
+        }),
+    options: {
+        inVoiceChannel: true,
+        isPlaying: true,
+        sameVoiceChannel: true
+    },
+    async execute({ interaction, formatMessage, client, language }) {
         if (!interaction.inCachedGuild()) return 0;
-        const player = this.client.player.players.get(interaction.guild.id) as Player
+        const player = client.player.players.get(interaction.guild.id) as Player
         if (player.paused) {
             const embed = new EmbedBuilder()
                 .setAuthor({
-                    iconURL: this.client.user?.displayAvatarURL(),
-                    name: this.t(this.language.default.defaultEmbedTitle, this.client.user?.username)
+                    iconURL: client.user?.displayAvatarURL(),
+                    name: formatMessage(language.default.defaultEmbedTitle, client.user?.username)
                 })
                 .setColor('Yellow')
-                .setDescription(this.language.pause.responses.errEmbed)
+                .setDescription(language.pause.responses.errEmbed)
                 .setTimestamp()
 
             interaction.editReply({
@@ -35,18 +39,16 @@ class PauseCommand extends Command {
             player.pause()
             const embed = new EmbedBuilder()
                 .setAuthor({
-                    iconURL: this.client.user?.displayAvatarURL(),
-                    name: this.t(this.language.default.defaultEmbedTitle, this.client.user?.username)
+                    iconURL: client.user?.displayAvatarURL(),
+                    name: formatMessage(language.default.defaultEmbedTitle, client.user?.username)
                 })
                 .setColor('Green')
-                .setDescription(this.language.pause.responses.successEmbed)
+                .setDescription(language.pause.responses.successEmbed)
                 .setTimestamp()
 
             interaction.editReply({
                 embeds: [embed]
             })
         }
-    }
-}
-
-export default PauseCommand;
+    },
+})
