@@ -28,6 +28,7 @@ export default new Command({
                 .setRequired(true)),
     options: { inVoiceChannel: true, isPlaying: false, sameVoiceChannel: true },
     async autoComplete({ interaction }) {
+        if(interaction.responded) return
         const value = (interaction.options.getFocused() || 'Music ')
         const videos = await getPlaylist(value, {
             max: 20
