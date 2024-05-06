@@ -2,7 +2,7 @@ import { readdirSync } from "fs";
 // import { Command } from "./Command";
 import { join } from "path";
 import { Debug } from "./Debug";
-import { REST, Routes, SlashCommandBuilder } from "discord.js"
+import { REST, Routes, SlashCommandBuilder, SlashCommandOptionsOnlyBuilder } from "discord.js"
 import { CustomClient } from "./Client";
 import config from "../config";
 import { Command } from "./Command";
@@ -11,7 +11,7 @@ const debug = new Debug()
 
 class CommandManager {
     commands = new Map<string, Command>()
-    protected commandsData = new Array<SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">>()
+    protected commandsData = new Array<SlashCommandOptionsOnlyBuilder>()
     constructor(readonly commandsFolder: string, readonly client: CustomClient) {
 
     }

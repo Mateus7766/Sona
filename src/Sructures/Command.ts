@@ -1,4 +1,4 @@
-import { AutocompleteInteraction, ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
+import { AutocompleteInteraction, ChatInputCommandInteraction, SlashCommandBuilder, SlashCommandOptionsOnlyBuilder} from "discord.js";
 import { English } from "../Languages/en-US";
 import { Portuguese } from "../Languages/pt-BR";
 import { CustomClient } from "./Client";
@@ -18,7 +18,7 @@ interface ExecuteOptions {
 }
 
 interface CommandData {
-    data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+    data: SlashCommandOptionsOnlyBuilder
     autoComplete?(data: AutoCompleteOptions): Promise<any>
     execute: (data: ExecuteOptions) => Promise<any>
     options?: {
@@ -29,7 +29,7 @@ interface CommandData {
 }
 
 class Command {
-    data: SlashCommandBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
+    data: SlashCommandOptionsOnlyBuilder
     execute: (data: ExecuteOptions) => Promise<any>
     autoComplete?: (data: AutoCompleteOptions) => Promise<any>
     options?: {
