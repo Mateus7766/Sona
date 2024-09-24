@@ -29,11 +29,11 @@ export default new Command({
     options: { inVoiceChannel: true, isPlaying: false, sameVoiceChannel: true, },
     async autoComplete({ interaction }) {
         if(interaction.responded) return
-        const value = interaction.options.getFocused() || 'Music'
-        const videos = await getVideo(value, {
-            max: 20
-        })
-        await interaction.respond(videos.map((video, i) => ({ name: `[${++i}] ${video.title}`.slice(0, 98), value: video.link })))
+        // const value = interaction.options.getFocused() || 'Music'
+        // const videos = await getVideo(value, {
+        //     max: 20
+        // })
+        await interaction.respond([])
     },
     async execute({ interaction, formatMessage, client, language }) {
         const query = interaction.options.getString(English.commands.play.options[0].name, true)

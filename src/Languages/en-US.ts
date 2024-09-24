@@ -34,6 +34,14 @@ export const English = {
                 description: '⭐ Opção ≫ The playlist name.'
             }]
         },
+        clearqueue: {
+            name: 'clearqueue',
+            description: '🎶 Music ≫ Clears the music queue.',
+            responses: {
+                noMusic: 'Oops, there are no other songs in the queue, only the one you are currently listening to...',
+                success: 'The song queue has been cleared.'
+            }
+        },
         help: {
             name: 'help',
             description: '💻 Normal ≫ Show my commands.',
@@ -61,7 +69,7 @@ export const English = {
             description: '🎶 Music ≫ Adds or removes an effect from the music.',
             responses: {
                 disableMessage: 'If there was any filter, it has been removed.',
-                enable: 'The **{{}}** filter has been activated. If another one was active, it has been deactivated.\n\n`{{}}`',
+                enable: '🔊 The **{{}}** filter has been activated. If another one was active, it has been deactivated.\n\n```yaml\n{{}}```',
                 welcome: 'Welcome to the filters panel. Please select the filter you want to activate, paying attention to their descriptions.',
                 choice: 'Choice a filter.',
                 disableDescr: 'Disable audio filters.',

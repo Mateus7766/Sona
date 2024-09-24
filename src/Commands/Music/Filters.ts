@@ -1,5 +1,5 @@
 import { Command } from "../../Sructures/Command";
-import {  SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ComponentType } from "discord.js";
+import { SlashCommandBuilder, EmbedBuilder, StringSelectMenuBuilder, StringSelectMenuOptionBuilder, ActionRowBuilder, ComponentType } from "discord.js";
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { Player } from "vulkava";
@@ -196,9 +196,25 @@ export default new Command({
                         player.filters.setEqualizer([-1.16, 0.28, 0.42, 0.5, 0.36, 0, -0.3, -0.21, -0.21])
                         break
                 }
+
+                const replyEmbed = new EmbedBuilder()
+                .setAuthor({
+                    iconURL: client.user?.displayAvatarURL(),
+                    name: formatMessage(language.default.defaultEmbedTitle, client.user?.username)
+                })
+                .setColor('White')
+                .setTimestamp()
+
                 const desc = i.component.toJSON().options.find(option => option.value == i.values[0])?.description
-                if (i.values[0] == 'desativar') await i.followUp(language.filters.responses.disableMessage)
-                else await i.followUp(formatMessage(language.filters.responses.enable, i.values[0], desc))
+                if (i.values[0] == 'disable') embed.setDescription(language.filters.responses.disableMessage)
+                else embed.setDescription(formatMessage(language.filters.responses.enable, i.values[0], desc))
+
+
+                await i.followUp({
+                    embeds: [embed]
+                })
+
+
             })
             .on('end', async () => {
                 row.components[0].setDisabled(true)

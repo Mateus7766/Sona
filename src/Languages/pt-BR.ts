@@ -21,6 +21,14 @@ export const Portuguese = {
             sameVoiceChannel: 'Você está em um canal de voz diferente do meu.',
             defaultEmbedTitle: '{{}} | Sistema de música'
         },
+        clearqueue: {
+            name: 'limparfila',
+            description: '🎶 Música ≫ Limpa a fila de musicas.',
+            responses: {
+                noMusic: 'Eita, não tem nenhuma música na fila, só essa que você ta ouvindo agora...',
+                success: 'A fila de músicas foi limpa.'
+            }
+        },
         help: {
             name: 'ajuda',
             description: '💻 Normal ≫ Mostra meus comandos.',
@@ -60,7 +68,7 @@ export const Portuguese = {
             description: '🎶 Música ≫ Adiciona ou remove um efeito da música.',
             responses: {
                 disableMessage: 'Se tinha algum filtro, ele foi removido.',
-                enable: 'O filtro **{{}}** foi ativado, se tinha outro ativo ele foi desativado.\n\n`{{}}`',
+                enable: '🔊 O filtro **{{}}** foi ativado, se tinha outro ativo ele foi desativado.\n\n```yaml\n{{}}```',
                 welcome: 'Bem vindo ao painel de filtros, selecione o filtro que deseja ativar, preste atenção na descrição deles.',
                 choice: 'Escolha um filtro',
                 disableDescr: 'Desativar filtros de áudio.',

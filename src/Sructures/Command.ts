@@ -18,7 +18,7 @@ interface ExecuteOptions {
 }
 
 interface CommandData {
-    data: SlashCommandOptionsOnlyBuilder
+    data: SlashCommandOptionsOnlyBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
     autoComplete?(data: AutoCompleteOptions): Promise<any>
     execute: (data: ExecuteOptions) => Promise<any>
     options?: {
@@ -29,7 +29,7 @@ interface CommandData {
 }
 
 class Command {
-    data: SlashCommandOptionsOnlyBuilder
+    data: SlashCommandOptionsOnlyBuilder | Omit<SlashCommandBuilder, "addSubcommand" | "addSubcommandGroup">
     execute: (data: ExecuteOptions) => Promise<any>
     autoComplete?: (data: AutoCompleteOptions) => Promise<any>
     options?: {
