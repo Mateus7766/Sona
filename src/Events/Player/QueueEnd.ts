@@ -1,7 +1,7 @@
 import { PlayerEvents } from "../../Sructures/PlayerEvents";
 import { Debug } from "../../Sructures/Debug";
 import { Player } from "vulkava";
-import { EmbedBuilder, REST } from "discord.js";
+import { EmbedBuilder, REST, TextChannel } from "discord.js";
 
 
 class QueueEnd extends PlayerEvents {
@@ -28,9 +28,11 @@ class QueueEnd extends PlayerEvents {
         if (player.textChannelId) {
             const channel = this.client.channels.cache.get(player.textChannelId)
             if (!channel) return 0;
-            channel.isTextBased() ? channel.send({
-                embeds: [embed]
-            }) : null
+            if (channel instanceof TextChannel) {
+                channel.send({
+                    embeds: [embed]
+                })
+            }
         }
     }
 }

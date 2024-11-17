@@ -3,7 +3,7 @@ import { SlashCommandBuilder, EmbedBuilder, ColorResolvable } from "discord.js";
 import { Portuguese } from "../../Languages/pt-BR";
 import { English } from "../../Languages/en-US";
 import { DefaultQueue } from "vulkava";
-import { getVideo } from 'ytubes'
+import { search, SoundCloudTrack } from "sc-play";
 
 export default new Command({
     data: new SlashCommandBuilder()
@@ -28,16 +28,24 @@ export default new Command({
                 .setAutocomplete(true)),
     options: { inVoiceChannel: true, isPlaying: false, sameVoiceChannel: true, },
     async autoComplete({ interaction }) {
-        if(interaction.responded) return
-        // const value = interaction.options.getFocused() || 'Music'
-        // const videos = await getVideo(value, {
-        //     max: 20
-        // })
-        await interaction.respond([])
+        if (interaction.responded) return
+        try {
+            const value = interaction.options.getFocused() || 'Music'
+            const videos = await search(value, {
+                limit: 10,
+                type: 'tracks'
+            }) as SoundCloudTrack[]
+            await interaction.respond(videos.map((video, i) => ({ name: `[${++i}] ${video.title}`.slice(0, 98), value: video.url })))
+        } catch {
+            console.log('Interação invalida, bip bop.')
+        }
+
     },
     async execute({ interaction, formatMessage, client, language }) {
         const query = interaction.options.getString(English.commands.play.options[0].name, true)
-        const res = await client.player.search(query);
+        console.log(query)
+
+        const res = await client.player.search(query, 'soundcloud');
         if (!interaction.inCachedGuild()) return console.log('wtf')
 
         if (res.loadType === "LOAD_FAILED") {

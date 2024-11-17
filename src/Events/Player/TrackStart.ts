@@ -1,6 +1,6 @@
 import { PlayerEvents } from "../../Sructures/PlayerEvents";
 import { Player, Track } from "vulkava";
-import { EmbedBuilder } from "discord.js";
+import { EmbedBuilder, TextChannel } from "discord.js";
 
 class TrackStart extends PlayerEvents {
     name = 'trackStart'
@@ -26,9 +26,11 @@ class TrackStart extends PlayerEvents {
         if (player.textChannelId) {
             const channel = this.client.channels.cache.get(player.textChannelId)
             if (!channel) return 0;
-            channel.isTextBased() ? channel.send({
-                embeds: [embed]
-            }) : null
+            if(channel instanceof TextChannel) {
+                channel.send({
+                    embeds: [embed]
+                })
+            }
         }
     }
 }

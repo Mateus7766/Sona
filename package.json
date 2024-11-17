@@ -12,6 +12,7 @@
     "mongoose": "^7.4.3",
     "musicard": "^1.5.3",
     "node-fetch": "^2.6.7",
+    "sc-play": "^1.0.5",
     "ts-node": "^10.9.2",
     "vulkava": "^1.6.3",
     "ytubes": "^1.3.1",
