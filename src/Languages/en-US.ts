@@ -164,7 +164,8 @@ export const English = {
                 failed: 'Something went wrong, sorry.',
                 matches: 'No results found for your search.',
                 playlist: 'The playlist `{{}}` has been added to the queue.',
-                song: 'The song `{{}}` has been added to the queue.'
+                song: 'The song `{{}}` has been added to the queue.',
+                wrongMusic: 'Is this not the song you were looking for? Try entering the name of the singer or the band in the search parameter.\n> Just a heads-up: the songs are searched on [SoundCloud](https://soundcloud.com/), not on YouTube.'
             },
             options: [{
                 name: 'song',

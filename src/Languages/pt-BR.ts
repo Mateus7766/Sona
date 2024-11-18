@@ -163,7 +163,8 @@ export const Portuguese = {
                 failed: 'Algo deu errado, perdão',
                 matches: 'Não foi encontrado nenhum resultado para sua busca.',
                 playlist: 'A playlist `{{}}` foi adicionada a fila.',
-                song: 'A música `{{}}` foi adicionada a fila.'
+                song: 'A música `{{}}` foi adicionada a fila.',
+                wrongMusic: '> Essa não é a música que procurava? Tente colocar o nome do cantor ou da banda no parâmetro de busca.\n> Só avisando que as músicas são buscadas no [SoundCloud](https://soundcloud.com/), e não no YouTube.'
             },
             options: [{
                 name: 'musica',

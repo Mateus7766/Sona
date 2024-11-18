@@ -74,7 +74,7 @@ export default new Command({
                 player.queue.add(track);
             }
 
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [sendEmbed(formatMessage(language.play.responses.playlist, res.playlistInfo.name), 'Green')]
             });
 
@@ -82,9 +82,14 @@ export default new Command({
             const track = res.tracks[0];
             track.setRequester(interaction.user);
             player.queue.add(track);
-            interaction.editReply({
+            await interaction.editReply({
                 embeds: [sendEmbed(formatMessage(language.play.responses.song, track.title), 'Green')]
             });
+            if (Math.trunc(Math.random() * 10) >= 7) await interaction.followUp({
+                content: language.play.responses.wrongMusic,
+                ephemeral: true
+            })
+
         }
 
         if (!player.playing) await player.play();
