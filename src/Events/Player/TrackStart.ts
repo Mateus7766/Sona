@@ -6,7 +6,7 @@ class TrackStart extends PlayerEvents {
     name = 'trackStart'
     async execute(player: Player, track: Track) {
 
-        await this.client.utils.setVoiceChannelStatus(player, `<a:tocando:1195456765362442330> ${track.title}`);
+        await this.client.utils.setVoiceChannelStatus(player, `<a:disco:759835872690044988> ${track.title}`);
 
 
         const guild = this.client.guilds.cache.get(player.guildId)
